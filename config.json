@@ -1,0 +1,22 @@
+{
+    "DISCORD_TOKEN": "",
+    "client_id": "",
+    "guild_id": "",
+    "SPOT": false,
+    "OWNERS": [
+        516805045199699969,
+        642097099802017793
+    ],
+    "STARTUP_COGS": [
+        "general"
+    ],
+
+    "MODERATOR_ROLE": "moderator",
+    "COMANAGERS_IDS": [
+        516805045199699969
+    ],
+    "GITHUB_TOKEN": "",
+    "REPOSITORY_NAME": "",
+    "BRANCH_NAME": "",
+    "REPOSITORY_OWNER": ""
+}
