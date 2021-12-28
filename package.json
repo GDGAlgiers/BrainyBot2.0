@@ -3,6 +3,12 @@
     "@discordjs/builders": "^0.9.0",
     "@discordjs/rest": "^0.1.0-canary.0",
     "discord-api-types": "^0.25.2",
-    "discord.js": "^13.3.1"
-  }
+    "discord.js": "^13.4.0"
+  },
+  "name": "BrainyBot2.0",
+  "version": "1.0.0",
+  "main": "bot.",
+  "repository": "https://github.com/GDGAlgiers/BrainyBot2.0.git",
+  "author": "AlmammaAmir <56568152+amir-coder@users.noreply.github.com>",
+  "license": "MIT"
 }
