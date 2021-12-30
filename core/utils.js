@@ -15,7 +15,7 @@ function get_advice() {
             return
         } else {
             //getting an advice from data
-            const advices = data.toString().split(", ",);
+            const advices = data.toString().split(",");
             //number of advices:
             const advices_len = advices.length;
             const number = randomInt(advices_len);

@@ -9,26 +9,21 @@ client.once('ready', c => {
     console.log(`Ready! Logged in as ${c.user.tag}`);
 });
 
-client.on('interactionCreate', interaction => {
-    console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
-});
 
-
-client.commands = new Collection();
 
 client.commands = new Collection();
 
 for (const cog of STARTUP_COGS) {
-    console.log(cog);
     const commandFiles = fs.readdirSync(`./cogs/${cog}`).filter(file => file.endsWith('.js'));
     for (const file of commandFiles){
-        console.log(` ${cog}: ${file}`);
         const command = require(`./cogs/${cog}/${file}`);
         // Set a new item in the Collection
         // With the key as the command name and the value as the exported module
         client.commands.set(command.data.name, command);
     }
 }
+
+
 
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
