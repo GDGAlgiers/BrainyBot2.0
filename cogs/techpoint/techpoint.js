@@ -40,23 +40,23 @@ module.exports = {
         } else {
             if (!fs.existsSync(__dirname + "/tmp")) {
                 fs.mkdir(__dirname + "/tmp", function(err, path) { console.log(err) })
-            } else {
-                var content = '---\nTitle: ' + session_title + '\n---\n' +
-                    "Techpoint : " + session_title + '\n' +
-                    date.toDateString() + '\n'
-
-                fs.appendFile(__dirname + "/tmp" + "/" + date.toDateString() + ".md", content, function(err) { console.log(err) }, )
-
-
-
-
-
-                interaction.reply("Hello techpointers! enjoy your time and don't forget to take notes :) !")
-
             }
+            var content = '---\nTitle: ' + session_title + '\n---\n' +
+                "Techpoint : " + session_title + '\n' +
+                date.toDateString() + '\n'
+
+            fs.appendFile(__dirname + "/tmp" + "/" + date.toDateString() + ".md", content, function(err) { console.log(err) }, )
+
+
+            // un fichier pour chaque sallon 
+            fs.appendFile(__dirname + "/tmp" + "/notes" + ".md", "NOTES", function(err) { console.log(err) }, )
+            fs.appendFile(__dirname + "/tmp" + "/resources" + ".md", "RESOURCES", function(err) { console.log(err) }, )
+            fs.appendFile(__dirname + "/tmp" + "/off_notes" + ".md", "OFF NOTES", function(err) { console.log(err) }, )
+            fs.appendFile(__dirname + "/tmp" + "/off_resources" + ".md", "OFF RESOURCES", function(err) { console.log(err) }, )
+
+
+
+            interaction.reply("Hello techpointers! enjoy your time and don't forget to take notes :) !")
         }
-
-
-
     },
 };
