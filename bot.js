@@ -19,8 +19,10 @@ client.commands = new Collection();
 client.commands = new Collection();
 
 for (const cog of STARTUP_COGS) {
+    console.log(cog);
     const commandFiles = fs.readdirSync(`./cogs/${cog}`).filter(file => file.endsWith('.js'));
     for (const file of commandFiles){
+        console.log(` ${cog}: ${file}`);
         const command = require(`./cogs/${cog}/${file}`);
         // Set a new item in the Collection
         // With the key as the command name and the value as the exported module
