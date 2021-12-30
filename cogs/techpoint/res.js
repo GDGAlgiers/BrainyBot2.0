@@ -20,7 +20,7 @@ module.exports = {
         .addStringOption(option =>
             option.setName('descreption')
             .setDescription("descreption")
-            .setRequired(false)),
+            .setRequired(true)),
     async execute(interaction) {
         const link = interaction.options.getString('link');
         const descreption = interaction.options.getString('descreption');
@@ -43,7 +43,7 @@ module.exports = {
                 '\n---\n' + link + ' ' + descreption + ' added by ' + interaction.user.username + '\n---\n',
                 "UTF-8", { 'flags': 'a+' });
 
-            if (descreption === null) { descreption = ' ' }
+
             const errorembed = new MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle('RESOURCE ADDED')
