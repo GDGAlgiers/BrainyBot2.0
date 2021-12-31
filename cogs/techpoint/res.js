@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const path = require('path');
 const fs = require("fs");
 var date = new Date();
+const markdown = require('./././core/markdown_utils.js')
 
 function session_active() {
     console.log(__dirname)
@@ -25,7 +26,7 @@ module.exports = {
         const descreption = interaction.options.getString('descreption');
         if (!session_active()) {
             const errorembed = new MessageEmbed()
-                .setColor('#0099ff')
+                .setColor('#FF0000')
                 .setTitle('ERROR ❌')
                 .setDescription('a techpoint session must be active to take a note');
             const channel = interaction.client.channels.cache.get('925210219338928169');
@@ -35,7 +36,7 @@ module.exports = {
                 '\n---\n' + link + ' ' + descreption + ' added by ' + interaction.user.username + '\n---\n',
                 "UTF-8", { 'flags': 'a+' });
             const errorembed = new MessageEmbed()
-                .setColor('#0099ff')
+                .setColor('#00ff00')
                 .setTitle('RESOURCE ADDED')
                 .setDescription(descreption)
                 .setURL(link);

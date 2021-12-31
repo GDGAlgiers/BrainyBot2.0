@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require("fs");
-
+const markdown = require('./././core/markdown_utils.js')
 
 FILES = {
     "tmp/notes.md": "Notes",
@@ -41,18 +41,18 @@ module.exports = {
             if (!fs.existsSync(__dirname + "/tmp")) {
                 fs.mkdir(__dirname + "/tmp", function(err, path) { console.log(err) })
             }
-            var content = '---\nTitle: ' + session_title + '\n---\n' +
+            var content = '---\nTitle: ' + markdown.h1(session_title) + '\n---\n' +
                 "Techpoint : " + session_title + '\n' +
-                date.toDateString() + '\n'
+                markdown.bold(date.toDateString()) + '\n'
 
             fs.appendFile(__dirname + "/tmp" + "/" + date.toDateString() + ".md", content, function(err) { console.log(err) }, )
 
 
             // un fichier pour chaque sallon 
-            fs.appendFile(__dirname + "/tmp" + "/notes" + ".md", "NOTES", function(err) { console.log(err) }, )
-            fs.appendFile(__dirname + "/tmp" + "/resources" + ".md", "RESOURCES", function(err) { console.log(err) }, )
-            fs.appendFile(__dirname + "/tmp" + "/off_notes" + ".md", "OFF NOTES", function(err) { console.log(err) }, )
-            fs.appendFile(__dirname + "/tmp" + "/off_resources" + ".md", "OFF RESOURCES", function(err) { console.log(err) }, )
+            fs.appendFile(__dirname + "/tmp" + "/notes" + ".md", markdown.h2("NOTES"), function(err) { console.log(err) }, )
+            fs.appendFile(__dirname + "/tmp" + "/resources" + ".md", markdown.h2("RESOURCES"), function(err) { console.log(err) }, )
+            fs.appendFile(__dirname + "/tmp" + "/off_notes" + ".md", markdown.h2("OFF NOTES"), function(err) { console.log(err) }, )
+            fs.appendFile(__dirname + "/tmp" + "/off_resources" + ".md", markdown.h2("OFF RESOURCES"), function(err) { console.log(err) }, )
 
 
 

@@ -45,3 +45,5 @@ function author(text) { return '<span>' + italic(" -Added by{} " + bold(text)) +
 
 
 function list_item(body, auth) { return '<li>' + body + author(auth) + '</li>' + '\n' }
+
+module.exports = { h1, h2, h3, h4, h5, h6, italic, bold, paragraph, author, list_item, link }
