@@ -4,7 +4,8 @@
     "@discordjs/rest": "^0.1.0-canary.0",
     "discord-api-types": "^0.25.2",
     "discord.js": "^13.5.0",
-    "https": "^1.0.0"
+    "https": "^1.0.0",
+    "node-fetch": "^3.1.0"
   },
   "name": "BrainyBot2.0",
   "version": "1.0.0",
