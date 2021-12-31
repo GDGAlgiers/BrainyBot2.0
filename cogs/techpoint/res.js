@@ -8,7 +8,6 @@ function session_active() {
     console.log(__dirname)
     return fs.existsSync(__dirname + "/tmp" + "/" + date.toDateString() + ".md")
 }
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('res')
@@ -24,35 +23,23 @@ module.exports = {
     async execute(interaction) {
         const link = interaction.options.getString('link');
         const descreption = interaction.options.getString('descreption');
-
         if (!session_active()) {
-
             const errorembed = new MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle('ERROR ❌')
                 .setDescription('a techpoint session must be active to take a note');
-
             const channel = interaction.client.channels.cache.get('925210219338928169');
-
-
             channel.send({ embeds: [errorembed] })
-
         } else {
-
             fs.appendFileSync(__dirname + "/tmp" + "/resources" + ".md",
                 '\n---\n' + link + ' ' + descreption + ' added by ' + interaction.user.username + '\n---\n',
                 "UTF-8", { 'flags': 'a+' });
-
-
             const errorembed = new MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle('RESOURCE ADDED')
                 .setDescription(descreption)
                 .setURL(link);
-
             const channel = interaction.client.channels.cache.get('925210219338928169');
-
-
             channel.send({ embeds: [errorembed] })
         }
     },
