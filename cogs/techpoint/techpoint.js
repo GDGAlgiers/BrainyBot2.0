@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require("fs");
-const markdown = require('./././core/markdown_utils.js')
+const markdown = require("./../../core/markdown_utils.js")
 
 FILES = {
     "tmp/notes.md": "Notes",
@@ -11,6 +11,7 @@ FILES = {
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { title } = require('process');
+const {MessageEmbed} = require("discord.js");
 var date = new Date();
 
 function session_active() {
@@ -36,12 +37,12 @@ module.exports = {
         const session_title = interaction.options.getString('session_title');
 
         if (session_active()) {
-            await interaction.reply(`${session_title} launched !`);
+            await interaction.reply(` techpoint session already launched !`);
         } else {
             if (!fs.existsSync(__dirname + "/tmp")) {
                 fs.mkdir(__dirname + "/tmp", function(err, path) { console.log(err) })
             }
-            var content = '---\nTitle: ' + markdown.h1(session_title) + '\n---\n' +
+            var content =  + markdown.h1('---\nTitle: '+session_title) + '\n---\n' +
                 "Techpoint : " + session_title + '\n' +
                 markdown.bold(date.toDateString()) + '\n'
 
@@ -54,9 +55,13 @@ module.exports = {
             fs.appendFile(__dirname + "/tmp" + "/off_notes" + ".md", markdown.h2("OFF NOTES"), function(err) { console.log(err) }, )
             fs.appendFile(__dirname + "/tmp" + "/off_resources" + ".md", markdown.h2("OFF RESOURCES"), function(err) { console.log(err) }, )
 
-
-
-            interaction.reply("Hello techpointers! enjoy your time and don't forget to take notes :) !")
+            const errorembed = new MessageEmbed()
+                .setColor('#00ff00')
+                .setTitle('TECHPOINT')
+                .setDescription('Hello techpointers! enjoy your time and don\'t forget to take notes :) !');
+            const channel = interaction.client.channels.cache.get('925210219338928169');
+            channel.send({ embeds: [errorembed] })
+            interaction.client.ended()
         }
     },
 };

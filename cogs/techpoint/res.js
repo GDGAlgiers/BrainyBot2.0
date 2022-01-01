@@ -1,9 +1,10 @@
+
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const path = require('path');
 const fs = require("fs");
 var date = new Date();
-const markdown = require('./././core/markdown_utils.js')
 
 function session_active() {
     console.log(__dirname)

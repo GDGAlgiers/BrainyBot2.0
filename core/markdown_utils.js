@@ -28,8 +28,8 @@ function h6(text) { return '<h6>' + text + '</h6>' }
 
 
 
-function link(text, url) {}
-return '<a href="' + url + '">' + text + '</a>'
+function link(text, url) {return '<a href="' + url + '">' + text + '</a>'}
+
 
 
 function bold(text) { return '<b>' + text + '</b>' }
