@@ -4,6 +4,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const path = require('path');
 const fs = require("fs");
+const {link, paragraph, author} = require("../../core/markdown_utils");
 var date = new Date();
 
 function session_active() {
@@ -23,7 +24,7 @@ module.exports = {
             .setDescription("descreption")
             .setRequired(true)),
     async execute(interaction) {
-        const link = interaction.options.getString('link');
+        const url = interaction.options.getString('link');
         const descreption = interaction.options.getString('descreption');
         if (!session_active()) {
             const errorembed = new MessageEmbed()
@@ -34,15 +35,18 @@ module.exports = {
             channel.send({ embeds: [errorembed] })
         } else {
             fs.appendFileSync(__dirname + "/tmp" + "/resources" + ".md",
-                '\n---\n' + link + ' ' + descreption + ' added by ' + interaction.user.username + '\n---\n',
+                '\n---\n' +link(url,url)  + ' ' + paragraph(descreption) +  author(interaction.user.username) + '\n---\n',
                 "UTF-8", { 'flags': 'a+' });
-            const errorembed = new MessageEmbed()
-                .setColor('#00ff00')
+
+
+            const succesembed = new MessageEmbed()
+                .setColor('#00FF00')
                 .setTitle('RESOURCE ADDED')
                 .setDescription(descreption)
-                .setURL(link);
+                .setURL(url);
+
             const channel = interaction.client.channels.cache.get('925210219338928169');
-            channel.send({ embeds: [errorembed] })
+            channel.send({ embeds: [succesembed] })
         }
     },
 

@@ -48,7 +48,7 @@ module.exports = {
 
                 const succesembed = new MessageEmbed()
                     .setColor('#00FF00')
-                    .setTitle('RESOURCE ADDED')
+                    .setTitle('OFF RESOURCE ADDED')
                     .setDescription(descreption)
                     .setURL(url);
 

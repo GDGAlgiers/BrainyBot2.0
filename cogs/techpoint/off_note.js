@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const path = require('path');
 const fs = require("fs");
+const {paragraph, author} = require("../../core/markdown_utils");
 var date = new Date();
 
 function session_active() {
@@ -23,7 +24,7 @@ module.exports = {
         if (!session_active()) {
 
             const errorembed = new MessageEmbed()
-                .setColor('#0099ff')
+                .setColor('#FF0000')
                 .setTitle('ERROR ❌')
                 .setDescription('a techpoint session must be active to take a note');
 
@@ -35,17 +36,17 @@ module.exports = {
         } else {
 
             fs.appendFileSync(__dirname + "/tmp" + "/off_notes" + ".md",
-                '\n---\n' + note + ' added by : ' + interaction.user.username + '\n---\n', "UTF-8", { 'flags': 'a+' });
+                '\n---\n' +paragraph(note)  + ' added by : ' + author(interaction.user.username) + '\n---\n', "UTF-8", { 'flags': 'a+' });
 
-            const errorembed = new MessageEmbed()
-                .setColor('#0099ff')
-                .setTitle('NOTE ADDED')
-                .setDescription('thank you ' + interaction.user.username);
+            const succesembed = new MessageEmbed()
+                .setColor('#00ff00')
+                .setTitle('OFF NOTE ADDED')
+                .setDescription(note);
 
             const channel = interaction.client.channels.cache.get('925210219338928169');
 
 
-            channel.send({ embeds: [errorembed] })
+            channel.send({ embeds: [succesembed] })
         }
     },
 

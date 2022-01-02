@@ -40,7 +40,7 @@ function italic(text) { return '<i>' + text + '</i>' }
 
 
 
-function author(text) { return '<span>' + italic(" -Added by{} " + bold(text)) + '</span>' }
+function author(text) { return '<span>' + italic(" -Added by " + bold(text)) + '</span>' }
 
 
 
