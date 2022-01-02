@@ -1,11 +1,8 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
-const path = require('path');
-const fs = require("fs");
-const {author, paragraph , link} = require("../../core/markdown_utils");
 const {techpoint_chat_channel_id} = require("../../config.json")
 const {add_off_res, session_active} = require("../../core/utils");
-var date = new Date();
+
 
 
 module.exports = {

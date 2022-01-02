@@ -1,9 +1,5 @@
-const path = require('path');
-const fs = require("fs");
-const markdown = require("./../../core/markdown_utils.js")
+
 const {techpoint_chat_channel_id} = require("../../config.json")
-
-
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const {MessageEmbed} = require("discord.js");
 const {create_files , create_tmp, session_active, tmp_existe} = require("../../core/utils");
