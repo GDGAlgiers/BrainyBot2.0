@@ -5,10 +5,7 @@ const fs = require("fs");
 const {paragraph, author} = require("../../core/markdown_utils");
 var date = new Date();
 const {techpoint_chat_channel_id} = require("../../config.json")
-function session_active() {
-    console.log(__dirname)
-    return fs.existsSync(__dirname + "/tmp" + "/" + date.toDateString() + ".md")
-}
+const {session_active, add_off_note} = require("../../core/utils");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -34,10 +31,7 @@ module.exports = {
             channel.send({ embeds: [errorembed] })
 
         } else {
-
-            fs.appendFileSync(__dirname + "/tmp" + "/off_notes" + ".md",
-                '\n---\n' +paragraph(note)  + ' added by : ' + author(interaction.user.username) + '\n---\n', "UTF-8", { 'flags': 'a+' });
-
+            add_off_note(note , interaction.user.username)
             const succesembed = new MessageEmbed()
                 .setColor('#00ff00')
                 .setTitle('OFF NOTE ADDED')

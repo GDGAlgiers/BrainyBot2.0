@@ -5,10 +5,8 @@ const fs = require("fs");
 const {paragraph, author} = require("../../core/markdown_utils");
 var date = new Date();
 const {techpoint_chat_channel_id} = require("../../config.json")
-function session_active() {
-    console.log(__dirname)
-    return fs.existsSync(__dirname + "/tmp" + "/" + date.toDateString() + ".md")
-}
+const {session_active, add_note} = require("../../core/utils");
+
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -35,9 +33,7 @@ module.exports = {
 
         } else {
 
-
-            fs.appendFileSync(__dirname + "/tmp" + "/notes" + ".md",
-                '\n---\n' +paragraph(note)  +  author(interaction.user.username) + '\n---\n', "UTF-8", { 'flags': 'a+' });
+            add_note(note , interaction.user.username)
 
             const succesembed = new MessageEmbed()
                 .setColor('#00ff00')

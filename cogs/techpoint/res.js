@@ -6,12 +6,10 @@ const path = require('path');
 const fs = require("fs");
 const {techpoint_chat_channel_id} = require("../../config.json")
 const {link, paragraph, author} = require("../../core/markdown_utils");
-var date = new Date();
+const {session_active, add_res} = require("../../core/utils");
 
-function session_active() {
-    console.log(__dirname)
-    return fs.existsSync(__dirname + "/tmp" + "/" + date.toDateString() + ".md")
-}
+
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('res')
@@ -35,9 +33,7 @@ module.exports = {
             const channel = interaction.client.channels.cache.get(techpoint_chat_channel_id);
             channel.send({ embeds: [errorembed] })
         } else {
-            fs.appendFileSync(__dirname + "/tmp" + "/resources" + ".md",
-                '\n---\n' +link(url,url)  + ' ' + paragraph(descreption) +  author(interaction.user.username) + '\n---\n',
-                "UTF-8", { 'flags': 'a+' });
+           add_res(url , descreption , interaction.user.username)
 
 
             const succesembed = new MessageEmbed()
