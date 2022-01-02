@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require("fs");
 const {paragraph, author} = require("../../core/markdown_utils");
 var date = new Date();
-
+const {techpoint_chat_channel_id} = require("../../config.json")
 function session_active() {
     console.log(__dirname)
     return fs.existsSync(__dirname + "/tmp" + "/" + date.toDateString() + ".md")
@@ -28,7 +28,7 @@ module.exports = {
                 .setTitle('ERROR ❌')
                 .setDescription('a techpoint session must be active to take a note');
 
-            const channel = interaction.client.channels.cache.get('925210219338928169');
+            const channel = interaction.client.channels.cache.get(techpoint_chat_channel_id);
 
 
             channel.send({ embeds: [errorembed] })
@@ -43,7 +43,7 @@ module.exports = {
                 .setTitle('OFF NOTE ADDED')
                 .setDescription(note);
 
-            const channel = interaction.client.channels.cache.get('925210219338928169');
+            const channel = interaction.client.channels.cache.get(techpoint_chat_channel_id);
 
 
             channel.send({ embeds: [succesembed] })

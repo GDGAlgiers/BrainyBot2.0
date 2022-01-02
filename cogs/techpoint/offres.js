@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const path = require('path');
 const fs = require("fs");
 const {author, paragraph , link} = require("../../core/markdown_utils");
+const {techpoint_chat_channel_id} = require("../../config.json")
 var date = new Date();
 
 function session_active() {
@@ -34,7 +35,7 @@ module.exports = {
                     .setTitle('ERROR ❌')
                     .setDescription('a techpoint session must be active ');
 
-                const channel = interaction.client.channels.cache.get('925210219338928169');
+                const channel = interaction.client.channels.cache.get(techpoint_chat_channel_id);
 
 
                 channel.send({ embeds: [errorembed] })
@@ -52,7 +53,7 @@ module.exports = {
                     .setDescription(descreption)
                     .setURL(url);
 
-                const channel = interaction.client.channels.cache.get('925210219338928169');
+                const channel = interaction.client.channels.cache.get(techpoint_chat_channel_id);
                 channel.send({ embeds: [succesembed] })
 
             }

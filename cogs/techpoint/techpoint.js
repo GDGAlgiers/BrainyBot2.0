@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require("fs");
 const markdown = require("./../../core/markdown_utils.js")
-
+const {techpoint_chat_channel_id} = require("../../config.json")
 FILES = {
     "tmp/notes.md": "Notes",
     "tmp/resources.md": "Resources",
@@ -59,7 +59,7 @@ module.exports = {
                 .setColor('#00ff00')
                 .setTitle('TECHPOINT')
                 .setDescription('Hello techpointers! enjoy your time and don\'t forget to take notes :) !');
-            const channel = interaction.client.channels.cache.get('925210219338928169');
+            const channel = interaction.client.channels.cache.get(techpoint_chat_channel_id);
             channel.send({ embeds: [errorembed] })
             interaction.client.ended()
         }

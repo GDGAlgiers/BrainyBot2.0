@@ -1,0 +1,22 @@
+{
+    "client_id": "925190032543862906",
+    "guild_id": "925181739620499476",
+    "techpoint_chat_channel_id" : "925210219338928169",
+    "DISCORD_TOKEN": "OTI1MTkwMDMyNTQzODYyOTA2.YcpgXA.3UmnsOoxtwfqLK7oHsvwxHDdwB8",
+    "STARTUP_COGS": [
+        "general", "techpoint"
+    ],
+
+    "SPOT": false,
+    "OWNERS": [
+        516805045199699969,
+        642097099802017793
+    ],
+
+    "MODERATOR_ROLE": "moderator",
+    "COMANAGERS_IDS": [
+        516805045199699969
+    ]
+
+
+}
