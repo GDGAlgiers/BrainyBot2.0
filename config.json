@@ -1,19 +1,19 @@
 {
-    "DISCORD_TOKEN": "OTI1MTcxOTI5MjczNDc1MTAy.YcpPgA.vk2TODQZ0lI6IlsRhFl33vx5nxw",
-    "client_id": "925171929273475102",
-    "guild_id": "925312162568736769",
-    "SPOT": false,
+    "DISCORD_TOKEN": "",
+    "client_id": "",
+    "guild_id": "",
+    "SPOT": true,
     "OWNERS": [
-        925171929273475102
+        925171929273475100
     ],
     "STARTUP_COGS": [
         "general",
         "fun"
     ],
-
     "MODERATOR_ROLE": "moderator",
     "COMANAGERS_IDS": [
-        516805045199699969
+        516805045199700000,
+        268140405663465470
     ],
     "GITHUB_TOKEN": "",
     "REPOSITORY_NAME": "",
