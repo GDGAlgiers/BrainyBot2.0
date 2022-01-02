@@ -1,14 +1,15 @@
 {
-    "DISCORD_TOKEN": "OTI1MTcxOTI5MjczNDc1MTAy.YcpPgA.vk2TODQZ0lI6IlsRhFl33vx5nxw",
-    "client_id": "925171929273475102",
-    "guild_id": "925312162568736769",
+    "DISCORD_TOKEN": "",
+    "client_id": "",
+    "guild_id": "",
     "SPOT": false,
     "OWNERS": [
-        925171929273475102
+        
     ],
     "STARTUP_COGS": [
         "general",
-        "fun"
+        "fun",
+        "owner"
     ],
 
     "MODERATOR_ROLE": "moderator",
