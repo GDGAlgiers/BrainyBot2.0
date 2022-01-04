@@ -1,8 +1,7 @@
-
-const {techpoint_chat_channel_id} = require("../../config.json")
+const { techpoint_chat_channel_id } = require("../../config.json")
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const {MessageEmbed} = require("discord.js");
-const {create_files , create_tmp, session_active, tmp_existe} = require("../../core/utils");
+const { MessageEmbed } = require("discord.js");
+const { create_files, create_tmp, session_active, tmp_existe } = require("../../core/utils");
 
 
 
@@ -17,10 +16,10 @@ module.exports = {
             .setRequired(true)),
     async execute(interaction) {
 
-        // if (!interaction.member.roles.cache.some(role => role.name === 'moderator')) {
-        //     await interaction.reply(`You don't have access !`);
-        //     return;
-        // }
+        if (!interaction.member.roles.cache.some(role => role.name === 'moderator')) {
+            await interaction.reply(`You don't have access !`);
+            return;
+        }
 
         const session_title = interaction.options.getString('session_title');
 
