@@ -15,13 +15,13 @@ module.exports = {
             const collector = interaction.channel.createMessageCollector({ filter, time: 15000 });
 
             collector.on('collect', (m) => {
-                console.log(`Collected ${m.content}`);
+                console.log(m.attachments);
             });
-            await wait(15000);
+
             collector.on('end', (collected) => {
                 console.log(`Collected ${collected.size} items`);
             });
-
+            await wait(15000);
             await interaction.editReply('finished listening for messages');
         } catch (error) {
             console.log(error);

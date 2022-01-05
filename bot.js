@@ -2,25 +2,17 @@ const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
 const { DISCORD_TOKEN, STARTUP_COGS } = require('./config.json');
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-
-
-client.once('ready', c => {
-    console.log(`Ready! Logged in as ${c.user.tag}`);
-});
-
-client.on('interactionCreate', interaction => {
-    console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
+const client = new Client({
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS]
 });
 
 
 client.commands = new Collection();
 
-client.commands = new Collection();
 
 for (const cog of STARTUP_COGS) {
     const commandFiles = fs.readdirSync(`./cogs/${cog}`).filter(file => file.endsWith('.js'));
-    for (const file of commandFiles){
+    for (const file of commandFiles) {
         const command = require(`./cogs/${cog}/${file}`);
         // Set a new item in the Collection
         // With the key as the command name and the value as the exported module
@@ -28,7 +20,18 @@ for (const cog of STARTUP_COGS) {
     }
 }
 
+
+client.once('ready', c => {
+    console.log(`Ready! Logged in as ${c.user.tag}`);
+});
+
+
+
 client.on('interactionCreate', async interaction => {
+
+
+    console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
+
     if (!interaction.isCommand()) return;
 
     const command = client.commands.get(interaction.commandName);
@@ -39,9 +42,12 @@ client.on('interactionCreate', async interaction => {
         await command.execute(interaction);
     } catch (error) {
         console.error(error);
-        await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+        return interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
     }
 });
+
+
+
 
 
 // Login to Discord with your client's token
