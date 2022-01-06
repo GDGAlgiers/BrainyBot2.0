@@ -1,6 +1,12 @@
 const fs = require("fs");
 const { Client, Collection, Intents } = require("discord.js");
 const { DISCORD_TOKEN, STARTUP_COGS } = require("./config.json");
+const logger = require("./utils/logger");
+const embed = require("./utils/embed");
+const utils = require("./utils");
+const { checkValidConfig } = require("./utils/validator");
+import { loadCommands } from "./loaders/commands";
+import { loadSlashCommands } from "./loaders/slashs";
 
 const client = new Client({
   intents: [
@@ -13,49 +19,58 @@ const client = new Client({
   ],
 });
 
-client.once("ready", (c) => {
-  console.log(`Ready! Logged in as ${c.user.tag}`);
+/**
+ * Initializing discord client
+ */
+client.commands = new Collection();
+client.slashCommands = new Collection();
+client.logger = logger;
+client.embed = embed;
+client.utils = utils;
+checkValidConfig();
+loadCommands(client);
+loadSlashCommands(client);
+
+
+
+
+// Error Handling
+
+process.on("uncaughtException", (err) => {
+  console.log("Uncaught Exception: " + err);
+
+  const exceptionembed = new MessageEmbed()
+    .setTitle("Uncaught Exception")
+    .setDescription(`${err}`)
+    .setColor("RED");
+  client.channels.cache
+    .get(ERROR_LOGS_CHANNEL)
+    .send({ embeds: [exceptionembed] });
 });
 
-client.on("interactionCreate", (interaction) => {
+process.on("unhandledRejection", (reason, promise) => {
   console.log(
-    `${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`
+    "[FATAL] Possibly Unhandled Rejection at: Promise ",
+    promise,
+    " reason: ",
+    reason.message
   );
-});
 
-client.commands = new Collection();
-
-client.commands = new Collection();
-
-for (const cog of STARTUP_COGS) {
-  const commandFiles = fs
-    .readdirSync(`./cogs/${cog}`)
-    .filter((file) => file.endsWith(".js"));
-  for (const file of commandFiles) {
-    const command = require(`./cogs/${cog}/${file}`);
-    // Set a new item in the Collection
-    // With the key as the command name and the value as the exported module
-    client.commands.set(command.data.name, command);
-  }
-}
-
-client.on("interactionCreate", async (interaction) => {
-  if (!interaction.isCommand()) return;
-
-  const command = client.commands.get(interaction.commandName);
-
-  if (!command) return;
-
-  try {
-    await command.execute(interaction);
-  } catch (error) {
-    console.error(error);
-    await interaction.reply({
-      content: "There was an error while executing this command!",
-      ephemeral: true,
-    });
-  }
+  const rejectionembed = new MessageEmbed()
+    .setTitle("Unhandled Promise Rejection")
+    .addField("Promise", `${promise}`)
+    .addField("Reason", `${reason.message}`)
+    .setColor("RED");
+  client.channels.cache
+    .get(ERROR_LOGS_CHANNEL)
+    .send({ embeds: [rejectionembed] });
 });
 
 // Login to Discord with your client's token
-client.login(DISCORD_TOKEN);
+client.login(BOT_TOKEN).then(() => {
+  console.log(
+    chalk.bgBlueBright.black(
+      ` Successfully logged in as: ${client.user.username}#${client.user.discriminator} `
+    )
+  );
+});
