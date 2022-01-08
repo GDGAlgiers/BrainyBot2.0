@@ -1,10 +1,9 @@
-const fs = require("fs");
-const { Client, Collection, Intents } = require("discord.js");
-const { DISCORD_TOKEN, STARTUP_COGS } = require("./config.json");
-const logger = require("./utils/logger");
-const embed = require("./utils/embed");
-const utils = require("./utils");
-const { checkValidConfig } = require("./utils/validator");
+import { Client, Collection, Intents, MessageEmbed } from "discord.js";
+import logger from "./utils/logger";
+import embed from "./utils/embed";
+import utils from "./utils";
+import config from "./config.json";
+import { checkValidConfig } from "./utils/validator";
 import { loadCommands } from "./loaders/commands";
 import { loadSlashCommands } from "./loaders/slashs";
 
@@ -27,25 +26,33 @@ client.slashCommands = new Collection();
 client.logger = logger;
 client.embed = embed;
 client.utils = utils;
+// load config
+client.config = {};
+for (var conf in config) {
+  if (conf in process.env) {
+    client.config[conf] = process.env[conf];
+  } else {
+    client.config[conf] = config[conf];
+  }
+}
+
 checkValidConfig();
 loadCommands(client);
 loadSlashCommands(client);
-
-
-
 
 // Error Handling
 
 process.on("uncaughtException", (err) => {
   console.log("Uncaught Exception: " + err);
-
-  const exceptionembed = new MessageEmbed()
-    .setTitle("Uncaught Exception")
-    .setDescription(`${err}`)
-    .setColor("RED");
-  client.channels.cache
-    .get(ERROR_LOGS_CHANNEL)
-    .send({ embeds: [exceptionembed] });
+  if (client.config.ERROR_LOGS_CHANNEL) {
+    const exceptionembed = new MessageEmbed()
+      .setTitle("Uncaught Exception")
+      .setDescription(`${err}`)
+      .setColor("RED");
+    client.channels.cache
+      .get(client.config.ERROR_LOGS_CHANNEL)
+      .send({ embeds: [exceptionembed] });
+  }
 });
 
 process.on("unhandledRejection", (reason, promise) => {
@@ -55,19 +62,21 @@ process.on("unhandledRejection", (reason, promise) => {
     " reason: ",
     reason.message
   );
-
-  const rejectionembed = new MessageEmbed()
-    .setTitle("Unhandled Promise Rejection")
-    .addField("Promise", `${promise}`)
-    .addField("Reason", `${reason.message}`)
-    .setColor("RED");
-  client.channels.cache
-    .get(ERROR_LOGS_CHANNEL)
-    .send({ embeds: [rejectionembed] });
+  if (client.config.ERROR_LOGS_CHANNEL) {
+    const rejectionembed = new MessageEmbed()
+      .setTitle("Unhandled Promise Rejection")
+      .addField("Promise", `${promise}`)
+      .addField("Reason", `${reason.message}`)
+      .setColor("RED");
+    client.channels.cache
+      .get(client.config.ERROR_LOGS_CHANNEL)
+      .send({ embeds: [rejectionembed] });
+  }
 });
 
 // Login to Discord with your client's token
-client.login(BOT_TOKEN).then(() => {
+console.log;
+client.login(client.config.DISCORD_TOKEN).then(() => {
   console.log(
     chalk.bgBlueBright.black(
       ` Successfully logged in as: ${client.user.username}#${client.user.discriminator} `

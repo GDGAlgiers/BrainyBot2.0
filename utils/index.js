@@ -1,20 +1,24 @@
-const DJS = require("discord.js");
+import DJS from "discord.js";
 
 /**
  * @param {DJS.Client} client
  * @param {DJS.DiscordAPIError | DJS.HTTPError | Error } error
  * @param {"warning" | "error"} type
  */
-async function sendErrorLog(client, error, type) {
+export async function sendErrorLog(client, error, type) {
   try {
     if (
       error.message?.includes("Missing Access") ||
       error.message?.includes("Missing Permissions")
-    ) return;
+    )
+      return;
 
     if (
-      error.stack?.includes?.("DeprecationWarning: Listening to events on the Db class")
-    ) return;
+      error.stack?.includes?.(
+        "DeprecationWarning: Listening to events on the Db class"
+      )
+    )
+      return;
 
     const { ERROR_LOGS_CHANNEL } = require("../../config.json");
     const channelId = ERROR_LOGS_CHANNEL;
@@ -22,8 +26,9 @@ async function sendErrorLog(client, error, type) {
       return client.logger.error("ERR_LOG", error?.stack || `${error}`);
     }
 
-    const channel = (client.channels.cache.get(channelId) ||
-      (await client.channels.fetch(channelId)));
+    const channel =
+      client.channels.cache.get(channelId) ||
+      (await client.channels.fetch(channelId));
 
     if (!channel || !havePermissions(channel)) {
       return client.logger.error("ERR_LOG", error?.stack || `${error}`);
@@ -57,7 +62,8 @@ async function sendErrorLog(client, error, type) {
 
     if (typeof stack === "string" && stack.length >= 4096) {
       console.error(stack);
-      stack = "An error occurred but was too long to send to Discord, check your console.";
+      stack =
+        "An error occurred but was too long to send to Discord, check your console.";
     }
 
     const { codeBlock } = require("@discordjs/builders");
@@ -84,13 +90,20 @@ async function sendErrorLog(client, error, type) {
  * @param {DJS.Interaction | DJS.TextChannel} resolveable
  * @returns {boolean}
  */
-function havePermissions(resolveable) {
+export function havePermissions(resolveable) {
   const ch = "channel" in resolveable ? resolveable.channel : resolveable;
-  if (ch instanceof DJS.ThreadChannel || ch instanceof DJS.DMChannel) return true;
+  if (ch instanceof DJS.ThreadChannel || ch instanceof DJS.DMChannel)
+    return true;
   return (
-    ch.permissionsFor(resolveable.guild.me)?.has(DJS.Permissions.FLAGS.VIEW_CHANNEL) &&
-    ch.permissionsFor(resolveable.guild.me)?.has(DJS.Permissions.FLAGS.SEND_MESSAGES) &&
-    ch.permissionsFor(resolveable.guild.me)?.has(DJS.Permissions.FLAGS.EMBED_LINKS)
+    ch
+      .permissionsFor(resolveable.guild.me)
+      ?.has(DJS.Permissions.FLAGS.VIEW_CHANNEL) &&
+    ch
+      .permissionsFor(resolveable.guild.me)
+      ?.has(DJS.Permissions.FLAGS.SEND_MESSAGES) &&
+    ch
+      .permissionsFor(resolveable.guild.me)
+      ?.has(DJS.Permissions.FLAGS.EMBED_LINKS)
   );
 }
 
@@ -98,18 +111,16 @@ function havePermissions(resolveable) {
  * @param {string} str
  * @returns {string}
  */
-function toCapitalize(str) {
-  if ((str === null) || (str === "")) {
+export function toCapitalize(str) {
+  if (str === null || str === "") {
     return false;
   } else {
     str = str.toString();
   }
 
-  return str.replace(/\w\S*/g,
-    function(txt) {
-      return txt.charAt(0).toUpperCase() +
-        txt.substr(1).toLowerCase();
-    });
+  return str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
 }
 
 /**
@@ -124,8 +135,8 @@ function formatNumber(n) {
  * @param {number} int
  * @returns {string}
  */
-function formatInt(int) {
-  return (int < 10 ? `0${int}` : int);
+export function formatInt(int) {
+  return int < 10 ? `0${int}` : int;
 }
 
 /**
@@ -133,45 +144,47 @@ function formatInt(int) {
  * @param {number} millisec Duration in milliseconds
  * @returns {string}
  */
-function formatDuration(millisec) {
+export function formatDuration(millisec) {
   if (!millisec || !Number(millisec)) return "00:00";
   const seconds = Math.round((millisec % 60000) / 1000);
   const minutes = Math.floor((millisec % 3600000) / 60000);
   const hours = Math.floor(millisec / 3600000);
-  if (hours > 0) return `${formatInt(hours)}:${formatInt(minutes)}:${formatInt(seconds)}`;
+  if (hours > 0)
+    return `${formatInt(hours)}:${formatInt(minutes)}:${formatInt(seconds)}`;
   if (minutes > 0) return `${formatInt(minutes)}:${formatInt(seconds)}`;
   return `00:${formatInt(seconds)}`;
-};
-
+}
 
 /**
  * Convert formatted duration to seconds
  * @param {string} formatted duration input
  * @returns {number}
  */
-function toMilliSeconds(input) {
+export function toMilliSeconds(input) {
   if (!input) return 0;
   if (typeof input !== "string") return Number(input) || 0;
   if (input.match(/:/g)) {
     const time = input.split(":").reverse();
     let s = 0;
     for (let i = 0; i < 3; i++)
-      if (time[i]) s += Number(time[i].replace(/[^\d.]+/g, "")) * Math.pow(60, i);
-    if (time.length > 3) s += Number(time[3].replace(/[^\d.]+/g, "")) * 24 * 60 * 60;
+      if (time[i])
+        s += Number(time[i].replace(/[^\d.]+/g, "")) * Math.pow(60, i);
+    if (time.length > 3)
+      s += Number(time[3].replace(/[^\d.]+/g, "")) * 24 * 60 * 60;
     return Number(s * 1000);
   } else {
     return Number(input.replace(/[^\d.]+/g, "") * 1000) || 0;
   }
 }
 
-
 /**
  * Parse number from input
  * @param {*} input Any
  * @returns {number}
  */
-function parseNumber(input) {
-  if (typeof input === "string") return Number(input.replace(/[^\d.]+/g, "")) || 0;
+export function parseNumber(input) {
+  if (typeof input === "string")
+    return Number(input.replace(/[^\d.]+/g, "")) || 0;
   return Number(input) || 0;
 }
 
@@ -179,20 +192,19 @@ function parseNumber(input) {
  * @param {string} string
  * @returns {string}
  */
-function codeContent(string, extension = "") {
+export function codeContent(string, extension = "") {
   return `\`\`\`${extension}\n${string}\`\`\``;
 }
 
-
-
-module.exports = {
+const utils = {
   sendErrorLog,
+  codeContent,
+  parseNumber,
+  toMilliSeconds,
+  formatNumber,
+  formatDuration,
   havePermissions,
   toCapitalize,
-  formatNumber,
   formatInt,
-  formatDuration,
-  toMilliSeconds,
-  parseNumber,
-  codeContent
 };
+export default utils;

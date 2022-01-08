@@ -1,5 +1,5 @@
-const moment = require("moment");
-const chalk = require("chalk");
+import moment from "moment";
+import chalk from "chalk";
 
 class Logger {
   get now() {
@@ -11,7 +11,9 @@ class Logger {
    * @param {string} error
    */
   error(type, error) {
-    return console.error(`${chalk.red("[ERROR]")}[${type.toUpperCase()}][${this.now}]: ${error}`);
+    return console.error(
+      `${chalk.red("[ERROR]")}[${type.toUpperCase()}][${this.now}]: ${error}`
+    );
   }
 
   /**
@@ -20,7 +22,9 @@ class Logger {
    */
   warn(type, warning) {
     return console.warn(
-      `${chalk.yellow("[WARNING]")}[${type.toUpperCase()}][${this.now}]: ${warning}`
+      `${chalk.yellow("[WARNING]")}[${type.toUpperCase()}][${
+        this.now
+      }]: ${warning}`
     );
   }
 
@@ -40,9 +44,12 @@ class Logger {
    */
   info(type, content) {
     return console.log(
-      `${chalk.blueBright("[INFO]")}[${type.toUpperCase()}][${this.now}]: ${content}`
+      `${chalk.blueBright("[INFO]")}[${type.toUpperCase()}][${
+        this.now
+      }]: ${content}`
     );
   }
 }
 
-module.exports = new Logger();
+const logger = new Logger();
+export default logger;

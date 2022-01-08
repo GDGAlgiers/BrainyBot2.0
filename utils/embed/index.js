@@ -1,6 +1,4 @@
-const { MessageEmbed, Interaction } = require("discord.js");
-
-
+import { MessageEmbed, Interaction } from "discord.js";
 
 /**
  * Returns a custom embed
@@ -29,10 +27,10 @@ function rootEmbed(interaction) {
     throw Error("'interaction' must be passed down as param! (baseEmbed)");
   }
 
-  return new MessageEmbed()
-    .setColor(interaction.guild.me.displayColor || "#00FFFF");
+  return new MessageEmbed().setColor(
+    interaction.guild.me.displayColor || "#00FFFF"
+  );
 }
-
 
 /**
  * Returns a custom embed
@@ -52,7 +50,9 @@ function infoMessage(interaction, text) {
     .setDescription(text)
     .setColor(interaction.guild.me.displayColor || "#00FFFF");
 
-  return interaction.editReply({ embeds: [embedI], allowedMentions: { repliedUser: false } }).catch(console.error);
+  return interaction
+    .editReply({ embeds: [embedI], allowedMentions: { repliedUser: false } })
+    .catch(console.error);
 }
 
 /**
@@ -69,11 +69,15 @@ function warnMessage(interaction, text) {
     throw Error("'text' must be passed down as param! (WarnMessage)");
   }
 
-  const embedW = new MessageEmbed()
-    .setDescription(text)
-    .setColor("ORANGE");
+  const embedW = new MessageEmbed().setDescription(text).setColor("ORANGE");
 
-  return interaction.editReply({ ephemeral: true, embeds: [embedW], allowedMentions: { repliedUser: false } }).catch(console.error);
+  return interaction
+    .editReply({
+      ephemeral: true,
+      embeds: [embedW],
+      allowedMentions: { repliedUser: false },
+    })
+    .catch(console.error);
 }
 
 /**
@@ -90,18 +94,21 @@ function errorMessage(interaction, text) {
     throw Error("'text' must be passed down as param! (ErrorMessage)");
   }
 
-  const embedE = new MessageEmbed()
-    .setDescription(text)
-    .setColor("RED");
+  const embedE = new MessageEmbed().setDescription(text).setColor("RED");
 
-  return interaction.editReply({ ephemeral: true, embeds: [embedE], allowedMentions: { repliedUser: false } }).catch(console.error);
+  return interaction
+    .editReply({
+      ephemeral: true,
+      embeds: [embedE],
+      allowedMentions: { repliedUser: false },
+    })
+    .catch(console.error);
 }
-
-module.exports = {
+const embed = {
   baseEmbed,
   rootEmbed,
   infoMessage,
   warnMessage,
   errorMessage,
-  queueMessage
 };
+export default embed;

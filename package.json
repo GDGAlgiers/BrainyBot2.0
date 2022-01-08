@@ -9,7 +9,7 @@
   },
   "author": "GDG Algiers",
   "scripts": {
-    "start": "node bot.js",
+    "start": "node  --experimental-specifier-resolution=node bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -29,6 +29,7 @@
     "djs-games": "^2.1.10",
     "dotenv": "^10.0.0",
     "enmap": "^5.8.7",
+    "moment": "^2.29.1",
     "os": "^0.1.2",
     "path": "^0.12.7",
     "superagent": "^6.1.0",
@@ -38,5 +39,6 @@
   },
   "devDependencies": {
     "eslint": "^8.5.0"
-  }
+  },
+  "type": "module"
 }

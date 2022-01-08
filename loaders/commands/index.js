@@ -1,12 +1,11 @@
-function loadCommands(client) {
-  const fs = require("fs");
-  const ascii = require("ascii-table");
+import fs from "fs";
+import ascii from "ascii-table";
+export function loadCommands(client) {
   const table = new ascii().setHeading("Commands", "Load Status");
 
   const commandFolders = fs.readdirSync("./commands");
-  const { COMMANDS_STARTUP_COGS } = require("../../config.json");
   for (const folder of commandFolders) {
-    if (!COMMANDS_STARTUP_COGS.includes(folder)) continue;
+    if (!client.config.COMMANDS_STARTUP_COGS.includes(folder)) continue;
     const commandFiles = fs
       .readdirSync(`./commands/${folder}`)
       .filter((file) => file.endsWith(".js"));
@@ -30,7 +29,3 @@ function loadCommands(client) {
     console.log(table.toString());
   }
 }
-
-module.exports = {
-  loadCommands,
-};
