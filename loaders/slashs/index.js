@@ -1,6 +1,6 @@
-import fs from "fs";
-import ascii from "ascii-table";
-export function loadSlashCommands(client) {
+const fs = require("fs");
+const ascii = require("ascii-table");
+function loadSlashCommands(client) {
   let slash = [];
 
   const table = new ascii().setHeading(" Slash Commands", "Load Status");
@@ -12,7 +12,7 @@ export function loadSlashCommands(client) {
       .readdirSync(`./slashs/${folder}`)
       .filter((file) => file.endsWith(".js"));
     for (const file of commandFiles) {
-      const command = require(`../SlashCommands/${folder}/${file}`);
+      const command = require(`../slashs/${folder}/${file}`);
       if (command.name) {
         client.slash.set(command.name, command);
         slash.push(command);
@@ -22,7 +22,6 @@ export function loadSlashCommands(client) {
           file,
           "❌ => Missing a help.name or help.name is not in string"
         );
-        continue;
       }
     }
     console.log(table.toString());
@@ -32,3 +31,4 @@ export function loadSlashCommands(client) {
     await client.application.commands.set(slash);
   });
 }
+module.exports = { loadSlashCommands };

@@ -1,12 +1,13 @@
-import { Client, Collection, Intents, MessageEmbed } from "discord.js";
-import logger from "./utils/logger";
-import embed from "./utils/embed";
-import utils from "./utils";
-import config from "./config.json";
-import chalk from "chalk";
-import { checkValidConfig } from "./utils/validator";
-import { loadCommands } from "./loaders/commands";
-import { loadSlashCommands } from "./loaders/slashs";
+const { Client, Collection, Intents, MessageEmbed } = require("discord.js");
+const logger = require("./utils/logger");
+const embed = require("./utils/embed");
+const utils = require("./utils");
+const config = require("./config.json");
+const chalk = require("chalk");
+const { checkValidConfig } = require("./utils/validator");
+const { loadCommands } = require("./loaders/commands");
+const { loadSlashCommands } = require("./loaders/slashs");
+const handleEvents = require("./core/handler");
 
 const client = new Client({
   intents: [
@@ -27,6 +28,7 @@ client.slashCommands = new Collection();
 client.logger = logger;
 client.embed = embed;
 client.utils = utils;
+
 // load config
 client.config = {};
 for (var conf in config) {
@@ -42,7 +44,8 @@ checkValidConfig(client);
 // load the commands
 loadCommands(client);
 loadSlashCommands(client);
-
+// event handlers
+handleEvents(client);
 // Error Handling
 
 process.on("uncaughtException", (err) => {
@@ -78,7 +81,6 @@ process.on("unhandledRejection", (reason, promise) => {
 });
 
 // Login to Discord with your client's token
-console.log;
 client.login(client.config.DISCORD_TOKEN).then(() => {
   console.log(
     chalk.bgBlueBright.black(

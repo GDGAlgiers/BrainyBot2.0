@@ -1,11 +1,11 @@
-import DJS from "discord.js";
+const DJS = require("discord.js");
 
 /**
  * @param {DJS.Client} client
  * @param {DJS.DiscordAPIError | DJS.HTTPError | Error } error
  * @param {"warning" | "error"} type
  */
-export async function sendErrorLog(client, error, type) {
+async function sendErrorLog(client, error, type) {
   try {
     if (
       error.message?.includes("Missing Access") ||
@@ -90,7 +90,7 @@ export async function sendErrorLog(client, error, type) {
  * @param {DJS.Interaction | DJS.TextChannel} resolveable
  * @returns {boolean}
  */
-export function havePermissions(resolveable) {
+function havePermissions(resolveable) {
   const ch = "channel" in resolveable ? resolveable.channel : resolveable;
   if (ch instanceof DJS.ThreadChannel || ch instanceof DJS.DMChannel)
     return true;
@@ -111,7 +111,7 @@ export function havePermissions(resolveable) {
  * @param {string} str
  * @returns {string}
  */
-export function toCapitalize(str) {
+function toCapitalize(str) {
   if (str === null || str === "") {
     return false;
   } else {
@@ -135,7 +135,7 @@ function formatNumber(n) {
  * @param {number} int
  * @returns {string}
  */
-export function formatInt(int) {
+function formatInt(int) {
   return int < 10 ? `0${int}` : int;
 }
 
@@ -144,7 +144,7 @@ export function formatInt(int) {
  * @param {number} millisec Duration in milliseconds
  * @returns {string}
  */
-export function formatDuration(millisec) {
+function formatDuration(millisec) {
   if (!millisec || !Number(millisec)) return "00:00";
   const seconds = Math.round((millisec % 60000) / 1000);
   const minutes = Math.floor((millisec % 3600000) / 60000);
@@ -160,7 +160,7 @@ export function formatDuration(millisec) {
  * @param {string} formatted duration input
  * @returns {number}
  */
-export function toMilliSeconds(input) {
+function toMilliSeconds(input) {
   if (!input) return 0;
   if (typeof input !== "string") return Number(input) || 0;
   if (input.match(/:/g)) {
@@ -182,7 +182,7 @@ export function toMilliSeconds(input) {
  * @param {*} input Any
  * @returns {number}
  */
-export function parseNumber(input) {
+function parseNumber(input) {
   if (typeof input === "string")
     return Number(input.replace(/[^\d.]+/g, "")) || 0;
   return Number(input) || 0;
@@ -192,11 +192,11 @@ export function parseNumber(input) {
  * @param {string} string
  * @returns {string}
  */
-export function codeContent(string, extension = "") {
+function codeContent(string, extension = "") {
   return `\`\`\`${extension}\n${string}\`\`\``;
 }
 
-const utils = {
+module.exports = {
   sendErrorLog,
   codeContent,
   parseNumber,
@@ -207,4 +207,3 @@ const utils = {
   toCapitalize,
   formatInt,
 };
-export default utils;

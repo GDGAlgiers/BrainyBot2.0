@@ -1,6 +1,7 @@
-import fs from "fs";
-import ascii from "ascii-table";
-export function loadCommands(client) {
+const fs = require("fs");
+const ascii = require("ascii-table");
+
+function loadCommands(client) {
   const table = new ascii().setHeading("Commands", "Load Status");
 
   const commandFolders = fs.readdirSync("./commands");
@@ -29,3 +30,4 @@ export function loadCommands(client) {
     console.log(table.toString());
   }
 }
+module.exports = { loadCommands };

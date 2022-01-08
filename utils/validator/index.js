@@ -1,10 +1,9 @@
-import chalk from "chalk";
+const chalk = require("chalk");
 
 /**
  * Checks if the proper values have been provided in the config.json file!
  */
-
-export async function checkValidConfig(client) {
+async function checkValidConfig(client) {
   if (!client.config.DISCORD_TOKEN) {
     throw ReferenceError(
       chalk.bgRedBright.black("[CONFIG_ERR] BOT_TOKEN_WAS_NOT_FOUND")
@@ -38,3 +37,6 @@ export async function checkValidConfig(client) {
     );
   }
 }
+module.exports = {
+  checkValidConfig,
+};

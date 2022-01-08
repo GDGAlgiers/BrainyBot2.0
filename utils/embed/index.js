@@ -1,4 +1,4 @@
-import { MessageEmbed, Interaction } from "discord.js";
+const { MessageEmbed, Interaction } = require("discord.js");
 
 /**
  * Returns a custom embed
@@ -104,11 +104,10 @@ function errorMessage(interaction, text) {
     })
     .catch(console.error);
 }
-const embed = {
+module.exports = {
   baseEmbed,
   rootEmbed,
   infoMessage,
   warnMessage,
   errorMessage,
 };
-export default embed;

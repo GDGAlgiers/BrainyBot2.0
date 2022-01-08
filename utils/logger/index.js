@@ -1,5 +1,5 @@
-import moment from "moment";
-import chalk from "chalk";
+const moment = require("moment");
+const chalk = require("chalk");
 
 class Logger {
   get now() {
@@ -52,4 +52,4 @@ class Logger {
 }
 
 const logger = new Logger();
-export default logger;
+module.exports = logger;
