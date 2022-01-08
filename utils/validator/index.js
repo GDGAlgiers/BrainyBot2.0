@@ -5,8 +5,7 @@ import chalk from "chalk";
  */
 
 export async function checkValidConfig(client) {
-  console.log(client.config);
-  if (!client.config.BOT_TOKEN) {
+  if (!client.config.DISCORD_TOKEN) {
     throw ReferenceError(
       chalk.bgRedBright.black("[CONFIG_ERR] BOT_TOKEN_WAS_NOT_FOUND")
     );

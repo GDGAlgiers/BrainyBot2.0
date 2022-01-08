@@ -3,6 +3,7 @@ import logger from "./utils/logger";
 import embed from "./utils/embed";
 import utils from "./utils";
 import config from "./config.json";
+import chalk from "chalk";
 import { checkValidConfig } from "./utils/validator";
 import { loadCommands } from "./loaders/commands";
 import { loadSlashCommands } from "./loaders/slashs";
@@ -36,7 +37,9 @@ for (var conf in config) {
   }
 }
 
-checkValidConfig();
+// check the configurations
+checkValidConfig(client);
+// load the commands
 loadCommands(client);
 loadSlashCommands(client);
 
