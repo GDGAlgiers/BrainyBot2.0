@@ -6,8 +6,8 @@ const config = require("./config.json");
 const chalk = require("chalk");
 const { checkValidConfig } = require("./utils/validator");
 const { loadCommands } = require("./loaders/commands");
-const { loadSlashCommands } = require("./loaders/slashs");
-const handleEvents = require("./core/handler");
+const { loadSlashCommands } = require("./loaders/slash");
+const { handleEvents } = require("./core/handler");
 
 const client = new Client({
   intents: [
@@ -24,7 +24,7 @@ const client = new Client({
  * Initializing discord client
  */
 client.commands = new Collection();
-client.slashCommands = new Collection();
+client.slash = new Collection();
 client.logger = logger;
 client.embed = embed;
 client.utils = utils;
@@ -39,13 +39,14 @@ for (var conf in config) {
   }
 }
 
-// check the configurations
-checkValidConfig(client);
 // load the commands
 loadCommands(client);
 loadSlashCommands(client);
 // event handlers
 handleEvents(client);
+// check the configurations
+checkValidConfig(client);
+
 // Error Handling
 
 process.on("uncaughtException", (err) => {

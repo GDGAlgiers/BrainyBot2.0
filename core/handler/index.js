@@ -1,5 +1,6 @@
 const chalk = require("chalk");
 const os = require("os-utils");
+const handleInteraction = require("./interactions");
 
 function handleEvents(client) {
   /**
@@ -45,6 +46,12 @@ function handleEvents(client) {
       chalk.bgCyanBright.black(`Current Cpu core : ${os.cpuCount()}`)
     );
   });
+  /**
+   * On interaction created
+   */
+  client.on("interactionCreate", (interaction) =>
+    handleInteraction(interaction, client)
+  );
 }
 module.exports = {
   handleEvents,
