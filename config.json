@@ -1,13 +1,14 @@
 {
-    "DISCORD_TOKEN": "ODA2Mjc3NzcwOTM4MDI0MDA3.YBnGsA.cbGg_allvND-iSAOHsAsXfg8BfI",
-    "client_id": "806277770938024007",
-    "guild_id": "806282165406138378",
+    "DISCORD_TOKEN": "",
+    "client_id": "",
+    "guild_id": "",
     "ERROR_LOGS_CHANNEL": "789619219666960384",
     "SPOT": false,
     "DEFAULT_PREFIX": "$",
     "COMMANDS_STARTUP_COGS": [],
     "SLASH_COMMANDS_STARTUP_COGS": [
-        "general"
+        "general",
+        "mods"
     ],
     "OWNERS": [
         925171929273475102
