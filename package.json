@@ -1,16 +1,44 @@
 {
-  "dependencies": {
-    "@discordjs/builders": "^0.9.0",
-    "@discordjs/rest": "^0.1.0-canary.0",
-    "discord-api-types": "^0.25.2",
-    "discord.js": "^13.5.0",
-    "https": "^1.0.0",
-    "node-fetch": "^3.1.0"
-  },
-  "name": "BrainyBot2.0",
-  "version": "1.0.0",
-  "main": "bot.",
-  "repository": "https://github.com/GDGAlgiers/BrainyBot2.0.git",
-  "author": "AlmammaAmir <56568152+amir-coder@users.noreply.github.com>",
-  "license": "MIT"
+    "name": "brainy-2.0",
+    "version": "v2.0.0-rc",
+    "description": "Brainy is the mascot of GDG Algiers, it's a free open source discord bot with multiple features",
+    "main": "index.js",
+    "engines": {
+        "node": ">=16.6.0",
+        "npm": ">=7.20.0"
+    },
+    "author": "GDG Algiers",
+    "scripts": {
+        "start": "node  --experimental-specifier-resolution=node bot.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "@discordjs/builders": "^0.9.0",
+        "@discordjs/rest": "^0.1.0-canary.0",
+        "@discordjs/voice": "^0.7.5",
+        "@iamtraction/google-translate": "^1.1.2",
+        "ascii-table": "^0.0.9",
+        "common-tags": "^1.8.2",
+        "config.json": "^0.0.4",
+        "cpu-stat": "^2.0.1",
+        "discord-api-types": "^0.26.0",
+        "discord-emoji": "^2.0.1",
+        "discord-fetch-all": "^3.0.2",
+        "discord.js": "^13.3.1",
+        "djs-games": "^2.1.10",
+        "dotenv": "^10.0.0",
+        "enmap": "^5.8.7",
+        "moment": "^2.29.1",
+        "chalk": "^4.1.0",
+        "os": "^0.1.2",
+        "os-utils": "^0.0.14",
+        "path": "^0.12.7",
+        "superagent": "^6.1.0",
+        "twemoji-parser": "^13.1.0",
+        "util": "^0.12.4",
+        "weky": "^3.1.8"
+    },
+    "devDependencies": {
+        "eslint": "^8.5.0"
+    }
 }
