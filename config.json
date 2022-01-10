@@ -2,16 +2,17 @@
     "DISCORD_TOKEN": "",
     "client_id": "",
     "guild_id": "",
+    "ERROR_LOGS_CHANNEL": "789619219666960384",
     "SPOT": false,
-    "OWNERS": [
-        516805045199699969,
-        642097099802017793
-    ],
-    "STARTUP_COGS": [
+    "DEFAULT_PREFIX": "$",
+    "COMMANDS_STARTUP_COGS": [],
+    "SLASH_COMMANDS_STARTUP_COGS": [
         "general",
         "mods"
     ],
-
+    "OWNERS": [
+        925171929273475102
+    ],
     "MODERATOR_ROLE": "moderator",
     "COMANAGERS_IDS": [
         516805045199699969
