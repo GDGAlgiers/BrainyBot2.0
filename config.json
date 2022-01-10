@@ -8,7 +8,8 @@
         642097099802017793
     ],
     "STARTUP_COGS": [
-        "general"
+        "general",
+        "mods"
     ],
 
     "MODERATOR_ROLE": "moderator",

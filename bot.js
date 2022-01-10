@@ -2,7 +2,7 @@ const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
 const { DISCORD_TOKEN, STARTUP_COGS } = require('./config.json');
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
 
 
 client.once('ready', c => {
@@ -20,7 +20,7 @@ client.commands = new Collection();
 
 for (const cog of STARTUP_COGS) {
     const commandFiles = fs.readdirSync(`./cogs/${cog}`).filter(file => file.endsWith('.js'));
-    for (const file of commandFiles){
+    for (const file of commandFiles) {
         const command = require(`./cogs/${cog}/${file}`);
         // Set a new item in the Collection
         // With the key as the command name and the value as the exported module
