@@ -26,7 +26,10 @@ module.exports = {
 
             const channel_name = interaction.options.getString('channel_name');
             const announcement_channel = interaction.guild.channels.cache.get(channel_name.substring(2, channel_name.length - 1));
-
+            if (!interaction.member.roles.cache.some(role => role.name === 'moderator')) {
+                await interaction.reply("You don't have the role to execute this command!");
+                return;
+            }
             if (interaction.channel.name !== "général") {
                 await interaction.reply(ephemeral("You're at the wrong channel!"));
             }
