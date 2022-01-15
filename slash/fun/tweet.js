@@ -1,5 +1,3 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-
 //utils
 const fetch = (...args) =>
     import ('node-fetch').then(({ default: fetch }) => fetch(...args));
