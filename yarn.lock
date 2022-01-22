@@ -1807,6 +1807,11 @@
   dependencies:
     "safe-buffer" "~5.1.0"
 
+"string-progressbar@^1.0.4":
+  "integrity" "sha512-OpkcFxlFjn7kz5jTWmPGY+FFJVN21lQ9k0fkK0XS5GVvlCgS1stgDNEoMyqnkbZEcVP3Gv6IxqgG7tnD7ChBSw=="
+  "resolved" "https://registry.npmjs.org/string-progressbar/-/string-progressbar-1.0.4.tgz"
+  "version" "1.0.4"
+
 "string-width@^1.0.1", "string-width@^1.0.2 || 2 || 3 || 4":
   "integrity" "sha1-EYvfW4zcUaKn5w0hHgfisLmxB9M="
   "resolved" "https://registry.npmjs.org/string-width/-/string-width-1.0.2.tgz"
