@@ -9,7 +9,9 @@
     "SLASH_COMMANDS_STARTUP_COGS": [
         "general",
         "mods",
-        "fun"
+        "fun",
+        "owner",
+        "techpoint"
     ],
     "OWNERS": [
         925171929273475102

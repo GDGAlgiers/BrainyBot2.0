@@ -1,14 +1,13 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 const AutorisationError = require("../../core/errors");
 const utils = require("../../core/utils");
-
+const { COMANAGERS_IDS } = require("../../config.json")
 
 module.exports = {
-    name: 'setspot',
+    name: 'set_spot',
     description: 'open the spot if its closed or close it if opened',
     execute: async(interaction) => {
-        let comanagers = utils.getCOMANAGERS_IDS();
-        if (!comanagers.includes(parseInt(interaction.user.id))) {
+        if (!COMANAGERS_IDS.includes(parseInt(interaction.user.id))) {
             new AutorisationError(interaction);
             return;
         }
@@ -28,7 +27,7 @@ module.exports = {
                 .setStyle('DANGER'),
             );
 
-        if (utils.getSpot()) {
+        if (utils.get_spot()) {
             boutton.components[0].setDisabled(true);
             await interaction.reply({
                 embeds: [replyEmbed.setDescription("The spot is currently **open**!").setColor("GREEN")],
@@ -66,10 +65,10 @@ module.exports = {
                 return;
             }
             if (collection.first().customId === "to_open") {
-                utils.setSpot(true);
+                utils.set_spot(true);
             } else
             if (collection.first().customId === "to_closed") {
-                utils.setSpot(false);
+                utils.set_spot(false);
             }
         });
     }

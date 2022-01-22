@@ -1,5 +1,3 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { channel } = require('diagnostics_channel');
 const { MessageEmbed } = require('discord.js');
 
 const ephemeral = (msg) => {
