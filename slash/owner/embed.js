@@ -1,18 +1,17 @@
 const { MessageEmbed } = require('discord.js');
 
 const { OWNERS } = require('../../config.json');
-
 module.exports = {
     name: "embed",
     description: "The bot will say anything you want, but within embeds.",
     options: [{
         name: 'args',
         description: 'say anything',
-        type: 'MENTIONABLE',
+        type: 'STRING',
         required: true
     }],
     execute: async(client, interaction, args) => {
-        const args = interaction.options.getString('args');
+        args = interaction.options.getString('args');
         if (OWNERS.includes(interaction.user.id)) {
             const EmbededMessage = new MessageEmbed()
                 .setColor('0x00FF00')

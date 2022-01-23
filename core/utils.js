@@ -57,10 +57,9 @@ function create_files(session_title) {
     fs.appendFile(tmppath + "/off_resources" + ".md", markdown.h2("OFF RESOURCES"), function(err) { console.log(err) }, )
 }
 
-function tmp_existe() {
+function tmp_exist() {
     return fs.existsSync(tmppath)
 }
-
 
 function add_res(url, descreption, name) {
     fs.appendFileSync(tmppath + "/resources" + ".md",
@@ -84,9 +83,16 @@ function add_off_note(note, name) {
         '\n---\n' + paragraph(note) + author(name) + '\n---\n', "UTF-8", { 'flags': 'a+' });
 }
 
+const ephemeral = (msg) => {
+    return {
+        content: msg,
+        ephemeral: true
+    }
+}
 
 
 module.exports = {
+    ephemeral,
     get_advice,
     get_spot,
     set_spot,
@@ -94,7 +100,7 @@ module.exports = {
     session_active,
     create_files,
     create_tmp,
-    tmp_existe,
+    tmp_exist,
     add_res,
     add_off_res,
     add_note,

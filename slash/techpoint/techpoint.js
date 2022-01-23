@@ -1,28 +1,29 @@
 const { MessageEmbed } = require('discord.js');
-const { techpoint_chat_channel_id } = require("../../config.json")
-const { session_active, add_note } = require("../../core/utils");
+const { TECHPOINT_CHAT_CHANNEL_ID } = require("../../config.json")
+const { session_active, tmp_exist, create_tmp, create_files, ephemeral } = require("../../core/utils");
 
 
 module.exports = {
     name: "techpoint",
-    description: "Add a note",
+    description: "launch the session.",
     options: [{
         name: 'session_title',
-        description: 'launch the session',
+        description: 'the title of the session',
+        type: 'STRING',
         required: true
     }],
     execute: async(client, interaction, args) => {
         if (!interaction.member.roles.cache.some(role => role.name === 'moderator')) {
-            await interaction.reply(`You don't have access !`);
+            await interaction.reply(ephemeral(`You don't have access !`));
             return;
         }
 
         const session_title = interaction.options.getString('session_title');
 
         if (session_active()) {
-            await interaction.reply(` techpoint session already launched !`);
+            await interaction.reply(ephemeral(` TechPoint session already launched !`));
         } else {
-            if (!tmp_existe()) {
+            if (!tmp_exist()) {
                 create_tmp()
             }
             create_files(session_title)
@@ -30,9 +31,9 @@ module.exports = {
                 .setColor('#00ff00')
                 .setTitle('TECHPOINT')
                 .setDescription('Hello techpointers! enjoy your time and don\'t forget to take notes :) !');
-            const channel = interaction.client.channels.cache.get(techpoint_chat_channel_id);
+            const channel = interaction.guild.channels.cache.get(TECHPOINT_CHAT_CHANNEL_ID);
             channel.send({ embeds: [errorembed] })
-
+            await interaction.reply(ephemeral(` TechPoint session launched successfully !`));
         }
     }
 

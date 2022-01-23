@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
-const { techpoint_chat_channel_id } = require("../../config.json")
-const { session_active, add_note } = require("../../core/utils");
+const { TECHPOINT_CHAT_CHANNEL_ID } = require("../../config.json")
+const { session_active, add_note, ephemeral } = require("../../core/utils");
 
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
     options: [{
         name: 'note',
         description: 'the content of the note',
-        type: 'MENTIONABLE',
+        type: 'STRING',
         required: true
     }],
     execute: async(client, interaction, args) => {
@@ -28,7 +28,10 @@ module.exports = {
             channel.send({ embeds: [errorembed] })
 
         } else {
-
+            if (interaction.channel.id !== TECHPOINT_CHAT_CHANNEL_ID) {
+                await interaction.reply(ephemeral("You're at the wrong channel!"));
+                return;
+            }
             add_note(note, interaction.user.username)
 
             const succesembed = new MessageEmbed()
@@ -36,10 +39,8 @@ module.exports = {
                 .setTitle('NOTE ADDED')
                 .setDescription(note);
 
-            const channel = interaction.client.channels.cache.get(techpoint_chat_channel_id);
 
-
-            channel.send({ embeds: [succesembed] })
+            await interaction.reply({ embeds: [succesembed] })
 
         }
     }

@@ -1,13 +1,14 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
-const AutorisationError = require("../../core/errors");
+const { AutorisationError } = require("../../core/errors");
 const utils = require("../../core/utils");
 const { COMANAGERS_IDS } = require("../../config.json")
 
 module.exports = {
     name: 'set_spot',
     description: 'open the spot if its closed or close it if opened',
-    execute: async(interaction) => {
-        if (!COMANAGERS_IDS.includes(parseInt(interaction.user.id))) {
+    execute: async(client, interaction, args) => {
+        const user_id = interaction.user.id
+        if (!COMANAGERS_IDS.includes(user_id)) {
             new AutorisationError(interaction);
             return;
         }

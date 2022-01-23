@@ -8,11 +8,11 @@ module.exports = {
     options: [{
         name: 'args',
         description: 'say anything',
-        type: 'MENTIONABLE',
+        type: 'STRING',
         required: true
     }],
     execute: async(client, interaction, args) => {
-        const args = interaction.options.getString('args');
+        args = interaction.options.getString('args');
         if (OWNERS.includes(interaction.user.id)) {
             await interaction.reply(args);
         } else {

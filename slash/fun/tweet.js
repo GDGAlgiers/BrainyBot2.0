@@ -10,17 +10,17 @@ module.exports = {
     options: [{
             name: "account",
             description: 'Enter the tweeter user"s account',
-            type: 'MENTIONABLE',
+            type: 'STRING',
             required: true,
         },
         {
             name: "text",
             description: 'The content of your tweet',
-            type: 'MENTIONABLE',
+            type: 'STRING',
             required: true
         }
     ],
-    execute: async(interaction) => {
+    execute: async(client, interaction, args) => {
         const account = interaction.options.getString('account');
 
         const text = interaction.options.getString('text');

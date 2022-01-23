@@ -17,7 +17,7 @@ function loadSlashCommands(client) {
             if (command.name) {
                 client.slash.set(command.name, command);
                 slash.push(command);
-                table.addRow(file, "✔️");
+                table.addRow(file.split('.')[0], "✔️");
             } else {
                 table.addRow(
                     file,
@@ -25,11 +25,11 @@ function loadSlashCommands(client) {
                 );
             }
         }
-        console.log(table.toString());
     }
+    console.log(table.toString());
 
     client.on("ready", async() => {
-        console.log(slash)
+        //console.log(slash)
         await client.application.commands.set(slash);
     });
 }

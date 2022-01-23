@@ -1,11 +1,7 @@
 const { MessageEmbed } = require('discord.js');
+const { ephemeral } = require("../../core/utils");
 
-const ephemeral = (msg) => {
-    return {
-        content: msg,
-        ephemeral: true
-    }
-}
+
 
 const wait = require('util').promisify(setTimeout);
 
@@ -25,11 +21,11 @@ module.exports = {
             const channel_name = interaction.options.getString('channel_name');
             const announcement_channel = interaction.guild.channels.cache.get(channel_name.substring(2, channel_name.length - 1));
             if (!interaction.member.roles.cache.some(role => role.name === 'moderator')) {
-                await interaction.reply("You don't have the role to execute this command!");
+                await interaction.editReply(ephemeral("You don't have the role to execute this command!"));
                 return;
             }
-            if (interaction.channel.name !== "général") {
-                await interaction.reply(ephemeral("You're at the wrong channel!"));
+            if (interaction.channel.name !== "bot_management") {
+                await interaction.editReply(ephemeral("You're at the wrong channel!"));
             }
 
             await interaction.editReply(ephemeral("Send the message and the image in this channel now"));
