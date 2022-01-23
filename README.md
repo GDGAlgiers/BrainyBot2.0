@@ -11,10 +11,11 @@
     <img src="images/Brainy.jpg" alt="Brainy" width="280" height="280" >
   </a>
 
-  <h3 align="center">Brainy Bot</h3>
+  <h3 align="center">BrainyBot 2.0</h3>
 
   <p align="center">
-The Repository for Brainy Bot made with Discord Py
+The Repository for BrainyBot 2.0 made with 
+    <a href="https://discordjs.guide/">discord.js</a>
     <br />
     <br />
     <a href="https://github.com/GDGAlgiers/BrainyBot">View Demo</a>
@@ -54,13 +55,13 @@ The Repository for Brainy Bot made with Discord Py
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Brainy is a free, open source multipurpose discord bot made by Python it lives in Our GDG Algiers Server. Brainy offers many cool features. 
+Brainybot 2.0 is a free, open source multipurpose discord bot made by J it lives in Our GDG Algiers Server. Brainy offers many cool features. 
 
 
 ### Built With
 
-* [Python](https://www.python.org/)
-* [DiscordPy ](https://discordpy.readthedocs.io/en/stable/)
+* [node.js](https://nodejs.org/)
+* [discord.js ](https://discordjs.guide/)
 
 
 <!-- GETTING STARTED -->
@@ -68,59 +69,44 @@ Brainy is a free, open source multipurpose discord bot made by Python it lives i
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
 
-Befor you begin you need to install python and configure A virtual environment if you are in **Windows** you can just use `Conda` 
-* Python [Ubuntu]
-  ```sh
-  $ sudo apt-get install python3 python3-pip
-  ```
-* VirtualEnv 
-  ```sh
-  $ pip install virtualenv
-  ```
 
 ### Installation
 
 1. Clone the repo and cd to it
    ```sh
-    $ git clone https://github.com/GDGAlgiers/BrainyBot.git 
-    $ cd BrainyBot
+    $ git clone https://github.com/GDGAlgiers/BrainyBot2.0.git 
+    $ cd BrainyBot2.0
    ```
-2. Create VirtualEnv & Activate environment
+2. Install Requirements
    ```sh
-    $ virtualenv env 
-    $ source env/bin/activate
-   ```
-3. Install Requirements
-   ```sh
-    $ pip install -r requirements
+    $ node install
    ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. First you have to create a discord application and get an Application token check out the [documentation](https://discord.com/developers/docs/intro)
-2. Set your application token in the configuration files  
+1. First you have to create a discord application and get an Application token, client id and guild id, check out the [documentation](https://discordjs.guide/#before-you-begin)
+2. Set your application token in the `config.json`
 3. Running The bot
    ```sh
-    $ python bot.py 
+    $ node bot.js 
    ```
 
 
 
 <!-- PROJECT STRUCTURE -->
 ## Project-Structure
-The project is split into multiple categories `cogs` where each category will hold a set of commands here are the current structure :
-Karma has a lot of features, with **5 main categories**:
+The project is split into multiple categories where each category will hold a set of commands here are the current structure :
+Karma has a lot of features, with **6 main categories**:
 
 
-*   👩‍💼 **General**: `serverinfo`, `ping`, `server` and **1** more! 
+*   👩‍💼 **General**: `serverinfo`, `ping`, `server` and **3** more! 
 *   🤖 **Mod**: `announce` 
 *   👻 **Fun**: `tweet`, `advice`
 *   ✉️ **Help**: `help`
 *   👑 **Owner**: `shutdown`, `say`, `embed`
-
+*   ✉️ **TechPoint**: `techpoint`, `note`, `res` and **3** more! 
 
 <!-- LICENSE -->
 ## License
@@ -132,18 +118,18 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 GDG Algiers - [@gdg_algiers](https://twitter.com/gdg_algiers) - gdg.algiers@esi.dz
 
-Project Link: [https://github.com/GDGAlgiers/BrainyBot](https://github.com/GDGAlgiers/BrainyBot)
+Project Link: [https://github.com/GDGAlgiers/BrainyBot2.0](https://github.com/GDGAlgiers/BrainyBot2.0)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/GDGAlgiers/BrainyBot.svg?style=for-the-badge
-[contributors-url]: https://github.com/GDGAlgiers/BrainyBot/graphs/contributors
+[contributors-url]: https://github.com/GDGAlgiers/BrainyBot2.0/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/GDGAlgiers/BrainyBot.svg?style=for-the-badge
-[forks-url]: https://github.com/GDGAlgiers/BrainyBot/network/members
+[forks-url]: https://github.com/GDGAlgiers/BrainyBot2.0/network/members
 [stars-shield]: https://img.shields.io/github/stars/GDGAlgiers/BrainyBot.svg?style=for-the-badge
-[stars-url]: https://github.com/GDGAlgiers/BrainyBot/stargazers
-[issues-shield]: https://img.shields.io/github/issues/GDGAlgiers/BrainyBot.svg?style=for-the-badge
-[issues-url]: https://github.com/GDGAlgiers/BrainyBot/issues
+[stars-url]: https://github.com/GDGAlgiers/BrainyBot2.0/stargazers
+[issues-shield]: https://img.shields.io/github/issues2.0/GDGAlgiers/BrainyBot.svg?style=for-the-badge
+[issues-url]: https://github.com/GDGAlgiers/BrainyBot2.0/issues
 [license-shield]: https://img.shields.io/github/license/GDGAlgiers/BrainyBot.svg?style=for-the-badge
-[license-url]: https://github.com/GDGAlgiers/BrainyBot/blob/master/LICENSE.txt
+[license-url]: https://github.com/GDGAlgiers/BrainyBot2.0/blob/master/LICENSE.txt
