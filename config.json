@@ -2,7 +2,7 @@
     "DISCORD_TOKEN": "",
     "client_id": "",
     "guild_id": "",
-    "ERROR_LOGS_CHANNEL": "",
+    "ERROR_LOGS_CHANNEL": "812446119753547786",
     "SPOT": true,
     "DEFAULT_PREFIX": "$",
     "COMMANDS_STARTUP_COGS": [],
