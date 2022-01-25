@@ -2,6 +2,7 @@ const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 const { AutorisationError, ArgumentError } = require("../../core/errors");
 const progressbar = require('string-progressbar');
 const { nb_votes } = require("../../core/utils");
+const uuid = require("uuid");
 
 module.exports = {
     name: 'poll',
@@ -44,7 +45,7 @@ module.exports = {
             }
             component[i].addComponents(
                 new MessageButton()
-                .setCustomId(index.toString())
+                .setCustomId(`${index} ${uuid.v4()}`)
                 .setLabel(reactions[index])
                 .setStyle('SECONDARY')
             );
@@ -72,9 +73,11 @@ module.exports = {
                         embeds: [i.message.embeds[0]],
                         components: []
                     });
+                    collector.stop();
                 } else {
                     new AutorisationError(i);
                 }
+
                 return;
             }
 
@@ -87,15 +90,15 @@ module.exports = {
                     return;
                 } else {
                     total_votes[i.member.id].add(i.customId);
-
                 }
             } else {
                 total_votes[i.member.id] = new Set([i.customId]);
             }
             let votes = nb_votes(total_votes);
             i.message.embeds[0].fields.forEach((field, index) => {
+                let option_number = i.customId.split(' ')[0];
                 let votes_old = parseInt(new RegExp("[0-9]+\\s").exec(field.value)[0]);
-                if (index.toString() === i.customId) {
+                if (index.toString() === option_number) {
                     i.message.embeds[0].fields[index].value = field.value.replace(votes_old.toString() + " ", (votes_old + 1).toString() + " ");
                     votes_old++;
                 }
@@ -108,6 +111,7 @@ module.exports = {
                 embeds: [i.message.embeds[0]],
                 components: i.message.components
             });
+            console.log(total_votes)
         });
     }
 };
