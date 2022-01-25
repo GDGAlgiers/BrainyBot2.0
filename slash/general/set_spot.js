@@ -8,11 +8,11 @@ module.exports = {
     description: 'open the spot if its closed or close it if opened',
     execute: async(client, interaction, args) => {
         const user_id = interaction.user.id
-        if (!COMANAGERS_IDS.includes(user_id)) {
+        if (!COMANAGERS_IDS.includes(user_id)) { //check if the user is a comanager, if not, throw an exception
             new AutorisationError(interaction);
             return;
         }
-        const replyEmbed = new MessageEmbed()
+        const replyEmbed = new MessageEmbed() // set the embed
             .setAuthor('GDG Algiers Spot', 'https://www.gdgalgiers.com/static/phonelogo-db9c725b1463afd46d9b886076124bb2.png', 'https://goo.gl/maps/Xgcq2nossHZG4Guy9');
         const boutton = new MessageActionRow()
             .addComponents(
@@ -28,7 +28,7 @@ module.exports = {
                 .setStyle('DANGER'),
             );
 
-        if (utils.get_spot()) {
+        if (utils.get_spot()) { //if the spot is open
             boutton.components[0].setDisabled(true);
             await interaction.reply({
                 embeds: [replyEmbed.setDescription("The spot is currently **open**!").setColor("GREEN")],
@@ -36,7 +36,7 @@ module.exports = {
                 components: [boutton]
             });
         } else {
-            boutton.components[1].setDisabled(true)
+            boutton.components[1].setDisabled(true);
             await interaction.reply({
                 embeds: [replyEmbed.setDescription('The spot is currently **closed**!').setColor("RED")],
                 ephemeral: true,
@@ -44,7 +44,7 @@ module.exports = {
             });
         }
         const filter = (button) => (button.user.id === interaction.user.id);
-        const collector = interaction.channel.createMessageComponentCollector({
+        const collector = interaction.channel.createMessageComponentCollector({ //listen to button clicks
             filter,
             max: 1,
             time: 60 * 1000
@@ -65,10 +65,10 @@ module.exports = {
                 });
                 return;
             }
-            if (collection.first().customId === "to_open") {
+            if (collection.first().customId === "to_open") { //set spot to open
                 utils.set_spot(true);
             } else
-            if (collection.first().customId === "to_closed") {
+            if (collection.first().customId === "to_closed") { //set spot to closed
                 utils.set_spot(false);
             }
         });

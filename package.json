@@ -38,7 +38,7 @@
         "twemoji-parser": "^13.1.0",
         "util": "^0.12.4",
         "uuid": "^8.3.2",
-        "weky": "^2.0.9"
+        "weky": "^3.1.8"
     },
     "devDependencies": {
         "eslint": "^8.5.0"

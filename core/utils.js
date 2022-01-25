@@ -14,26 +14,58 @@ const get_advice = () => {
     const number = randomInt(advices_len);
     const advice = advices[number];
     return advice;
-}
-
+};
+/**
+ *
+ *
+ * @return {boolean} - the value of SPOT variable in the config.json file
+ */
 const get_spot = () => {
     return JSON.parse(fs.readFileSync(path.resolve("config.json")))['SPOT'];
 };
-
+/**
+ * 
+ *
+ * @param {boolean} value - a boolean value to be assigned to SPOT variable in the config.json file
+ * @return {*} 
+ */
 const set_spot = (value) => {
-    file_path = path.resolve("config.json");
-    config = JSON.parse(fs.readFileSync(file_path));
+    let file_path = path.resolve("config.json");
+    let config = JSON.parse(fs.readFileSync(file_path));
     config['SPOT'] = value;
     fs.writeFileSync(file_path, JSON.stringify(config, null, '\t'));
-    return;
+    return 0;
 };
-
-const nb_votes = (votes) => {
+/**
+ * Get the total number of votes related to a specific poll
+ *
+ * @param {object} votes - contains votes of different users
+ * @param {string} id - The poll's id
+ * @return {number}  -total number of votes corresponding to the id poll 
+ */
+const nb_votesById = (votes, id) => {
     let nb = 0;
     for (let key in votes) {
-        nb += votes[key].size;
+        votes[key].forEach(vote => {
+            if (vote.split(" ")[1] == id) nb++;
+        });
     }
     return nb;
+};
+/**
+ * Delete votes related to a specific poll
+ *
+ * @param {object} votes - contains votes of different users
+ * @param {string} id - The poll's id
+ * @return {object} - The votes object after deleting the ended poll 
+ */
+const delete_votesById = (votes, id) => {
+    for (let key in votes) {
+        votes[key].forEach((vote, index) => {
+            if (vote.split(" ")[1] == id) votes[key].splice(index, 1);
+        });
+    }
+    return votes;
 };
 
 var date = new Date();
@@ -96,7 +128,7 @@ module.exports = {
     get_advice,
     get_spot,
     set_spot,
-    nb_votes,
+    nb_votesById,
     session_active,
     create_files,
     create_tmp,
@@ -104,5 +136,6 @@ module.exports = {
     add_res,
     add_off_res,
     add_note,
-    add_off_note
+    add_off_note,
+    delete_votesById
 }
