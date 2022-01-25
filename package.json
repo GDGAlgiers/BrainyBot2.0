@@ -20,7 +20,7 @@
         "ascii-table": "^0.0.9",
         "chalk": "^4.1.0",
         "common-tags": "^1.8.2",
-        "config.json": "^0.0.4",
+        "config.json": "^0.0.1",
         "cpu-stat": "^2.0.1",
         "discord-api-types": "^0.26.0",
         "discord-emoji": "^2.0.1",
@@ -37,7 +37,8 @@
         "superagent": "^6.1.0",
         "twemoji-parser": "^13.1.0",
         "util": "^0.12.4",
-        "weky": "^3.1.8"
+        "uuid": "^8.3.2",
+        "weky": "^2.0.9"
     },
     "devDependencies": {
         "eslint": "^8.5.0"
