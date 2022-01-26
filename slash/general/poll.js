@@ -95,13 +95,14 @@ module.exports = {
             if (total_votes[interaction.user.id]) { //if this user already voted on a poll
                 if (total_votes[interaction.user.id].includes(interaction.customId)) { //if he has already chosen this option, it will undo his vote
                     undo = true;
-                    total_votes[interaction.user.id].splice(total_votes[interaction.user.id].indexOf(interaction.custom), 1); //delete the vote 
+                    total_votes[interaction.user.id].splice(total_votes[interaction.user.id].indexOf(interaction.customId), 1); //delete the vote 
                 } else {
                     total_votes[interaction.member.id].push(interaction.customId); //add the user's vote to the value list corresponding to his id in total_votes object
                 }
             } else {
                 total_votes[interaction.member.id] = [interaction.customId]; //add a new user to the votes object
             }
+
             let votes = nb_votesById(total_votes, interaction.customId.split(' ')[1]); //get the total number of votes to that poll
             interaction.message.embeds[0].fields.forEach((field, index) => { //update each of the fields 
                 let votes_old = parseInt(new RegExp("[0-9]+\\s").exec(field.value)[0]); //get the number of previous votes to that option
