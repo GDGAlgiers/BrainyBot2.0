@@ -20,24 +20,24 @@ module.exports = {
             required: true,
         }
     ],
-    execute: async(client, interaction) => {
+    execute: async(client, interact) => {
         const reactions = ['0️⃣', '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟', "🅰", "🅱", "🅲", "🅳", "🅴", "🅵", "🅶", "🅷", "🅸", "🅹", "🅺", "🅻", "🅼", "🅽", "🅾", "🅿︎", "🆀", "🆁", "🆂", "🆃", "🆄", "🆅", "🆆", "🆇", "🆈", "🆉"]; // emojis to be used in the buttons
-        const question = interaction.options.getString('question');
-        const options = interaction.options.getString('options').split(",");
+        const question = interact.options.getString('question');
+        const options = interact.options.getString('options').split(",");
         const total = 100;
 
         if (!question || !options) { //if there misses poll question or poll options, throw error
-            new ArgumentError(interaction);
+            new ArgumentError(interact);
             return;
         }
 
         const PollEmbed = new MessageEmbed() //set the embed attributes
             .setColor('RANDOM')
             .setTitle('📊 ' + question)
-            .setFooter('You can choose multiple options\nClick on 🛑 to end the poll | Created by ' + interaction.user.username);
+            .setFooter('You can choose multiple options\nClick on 🛑 to end the poll | Created by ' + interact.user.username);
         const component = []; //will contain the buttons 
         let i = 0;
-        if (reactions.length < options.length) { await interaction.reply({ content: "🛑 You've exceeded the authorized number of options, please try again!", ephemeral: true }); return; } //there are more options than emojis
+        if (reactions.length < options.length) { await interact.reply({ content: "🛑 You've exceeded the authorized number of options, please try again!", ephemeral: true }); return; } //there are more options than emojis
         let id = uuid.v4(); // The poll id
         options.forEach((option, index) => { // add buttons
             let bar = progressbar.filledBar(total, 0, 20, ' ', '█');
@@ -63,10 +63,10 @@ module.exports = {
             .setEmoji("🛑")
             .setStyle('DANGER')
         );
-        await interaction.reply({ embeds: [PollEmbed], components: component, fetchReply: true }); //send the poll
+        await interact.reply({ embeds: [PollEmbed], components: component, fetchReply: true }); //send the poll
 
         const filter = button => { return !button.user.bot };
-        const collector = interaction.channel.createMessageComponentCollector({
+        const collector = interact.channel.createMessageComponentCollector({
             filter
         }); //listen to clicks
         let total_votes = {}; //contains a key: value pairs where key corresponds to the user's id and value is a list of his votes
@@ -75,7 +75,7 @@ module.exports = {
             let option_number = interaction.customId.split(' ')[0];
             if (option_number === "end_poll") {
                 if (interaction.user.id === interaction.message.interaction.user.id) { //check if the user corresponds to the one who created the poll
-                    delete_votesById(total_votes, option_number); //delete votes related to that poll
+                    delete_votesById(total_votes, interaction.customId.split(' ')[1]); //delete votes related to that poll
                     await interaction.update({
                         embeds: [interaction.message.embeds[0]],
                         components: []

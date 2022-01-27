@@ -61,10 +61,9 @@ const nb_votesById = (votes, id) => {
  */
 const delete_votesById = (votes, id) => {
     for (let key in votes) {
-        votes[key].forEach((vote, index) => {
-            if (vote.split(" ")[1] == id) votes[key].splice(index, 1);
-        });
+        votes[key] = votes[key].filter(vote => vote.split(" ")[1] !== id);
     }
+    console.log(votes)
     return votes;
 };
 
