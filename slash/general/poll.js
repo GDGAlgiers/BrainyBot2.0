@@ -65,7 +65,7 @@ module.exports = {
         );
         await interact.reply({ embeds: [PollEmbed], components: component, fetchReply: true }); //send the poll
 
-        const filter = button => { return !button.user.bot };
+        const filter = button => { return !button.user.bot && button.customId.split(' ')[1] === id };
         const collector = interact.channel.createMessageComponentCollector({
             filter
         }); //listen to clicks

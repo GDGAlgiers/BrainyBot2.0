@@ -63,7 +63,6 @@ const delete_votesById = (votes, id) => {
     for (let key in votes) {
         votes[key] = votes[key].filter(vote => vote.split(" ")[1] !== id);
     }
-    console.log(votes)
     return votes;
 };
 
