@@ -1,28 +1,24 @@
 {
-    "DISCORD_TOKEN": "",
-    "client_id": "",
-    "guild_id": "",
-    "ERROR_LOGS_CHANNEL": "812446119753547786",
-    "SPOT": true,
-    "DEFAULT_PREFIX": "$",
-    "COMMANDS_STARTUP_COGS": [],
-    "SLASH_COMMANDS_STARTUP_COGS": [
-        "general",
-        "mods",
-        "fun",
-        "owner",
-        "techpoint"
-    ],
-    "OWNERS": [
-        "642097099802017793"
-    ],
-    "MODERATOR_ROLE": "moderator",
-    "COMANAGERS_IDS": [
-        "64209709980201732793"
-    ],
-    "GITHUB_TOKEN": "",
-    "REPOSITORY_NAME": "",
-    "BRANCH_NAME": "",
-    "REPOSITORY_OWNER": "",
-    "TECHPOINT_CHAT_CHANNEL_ID": "934869478536278056"
+  "DISCORD_TOKEN": "",
+  "client_id": "",
+  "guild_id": "",
+  "ERROR_LOGS_CHANNEL": "812446119753547786",
+  "SPOT": true,
+  "DEFAULT_PREFIX": "$",
+  "COMMANDS_STARTUP_COGS": [],
+  "SLASH_COMMANDS_STARTUP_COGS": [
+    "general",
+    "mods",
+    "fun",
+    "owner",
+    "techpoint"
+  ],
+  "OWNERS": ["642097099802017793"],
+  "MODERATOR_ROLE": "moderator",
+  "COMANAGERS_IDS": ["64209709980201732793"],
+  "GITHUB_TOKEN": "",
+  "REPOSITORY_NAME": "",
+  "BRANCH_NAME": "",
+  "REPOSITORY_OWNER": "",
+  "TECHPOINT_CHAT_CHANNEL_ID": "934869478536278056"
 }
