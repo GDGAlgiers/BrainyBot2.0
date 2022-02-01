@@ -6,7 +6,7 @@ const config = require('../config.json');
 const chalk = require('chalk');
 const {checkValidConfig} = require('./utils/validator');
 const {loadCommands} = require('./loaders/commands');
-const {handleEvents} = require('./core/handler');
+const {handleEvents} = require('./events');
 
 const client = new Client({
   intents: [
@@ -47,7 +47,7 @@ checkValidConfig(client);
 // Error Handling
 
 process.on('uncaughtException', (err) => {
-  console.log('Uncaught Exception: ' + err);
+  console.log('Uncaught Exception: ' + err.stack);
   if (client.config.ERROR_LOGS_CHANNEL) {
     const exceptionembed = new MessageEmbed()
         .setTitle('Uncaught Exception')

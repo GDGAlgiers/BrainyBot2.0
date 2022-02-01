@@ -1,6 +1,7 @@
 const {MessageEmbed} = require('discord.js');
 
-const {OWNERS} = require('../../config.json');
+const {OWNERS} = require('config.json');
+
 module.exports = {
   name: 'embed',
   description: 'The bot will say anything you want, but within embeds.',

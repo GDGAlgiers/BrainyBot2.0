@@ -1,5 +1,5 @@
 const {MessageEmbed} = require('discord.js');
-const {TECHPOINT_CHAT_CHANNEL_ID} = require('../../config.json');
+const {TECHPOINT_CHAT_CHANNEL_ID} = require('config.json');
 const {sessionActive,
   tmpExist,
   createTmp,

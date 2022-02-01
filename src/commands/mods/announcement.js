@@ -1,5 +1,5 @@
 const {MessageEmbed} = require('discord.js');
-const {ephemeral} = require('../../core/utils');
+const {ephemeral} = require('../../utils');
 
 
 const wait = require('util').promisify(setTimeout);

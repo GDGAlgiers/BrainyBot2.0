@@ -7,26 +7,6 @@ const chalk = require('chalk');
  * @param {*} client
  */
 async function checkValidConfig(client) {
-  if (!client.config.DISCORD_TOKEN) {
-    throw ReferenceError(
-        chalk.bgRedBright.black('[CONFIG_ERR] BOT_TOKEN_WAS_NOT_FOUND'),
-    );
-  }
-
-  if (!client.config.COMMANDS_STARTUP_COGS) {
-    throw ReferenceError(
-        chalk.bgRedBright.black('[CONFIG_ERR] COMMANDS_STARTUP_COGS NOT FOUND'),
-    );
-  }
-
-  if (!client.config.SLASH_COMMANDS_STARTUP_COGS) {
-    throw ReferenceError(
-        chalk.bgRedBright.black(
-            '[CONFIG_ERR] SLASH_COMMANDS_STARTUP_COGS NOT FOUND',
-        ),
-    );
-  }
-
   if (!client.config.ERROR_LOGS_CHANNEL) {
     throw ReferenceError(
         chalk.bgRedBright.black(
@@ -34,9 +14,18 @@ async function checkValidConfig(client) {
         ),
     );
   }
-  if (!client.config.DEFAULT_PREFIX) {
+  if (!client.config.DISCORD_TOKEN) {
     throw ReferenceError(
-        chalk.bgRedBright.black('[CONFIG_ERR] DEFAULT_PREFIX_WAS_NOT_FOUND'),
+        chalk.bgRedBright.black('[CONFIG_ERR] BOT_TOKEN_WAS_NOT_FOUND'),
+    );
+  }
+
+
+  if (!client.config.SLASH_COMMANDS_STARTUP_COGS) {
+    throw ReferenceError(
+        chalk.bgRedBright.black(
+            '[CONFIG_ERR] SLASH_COMMANDS_STARTUP_COGS NOT FOUND',
+        ),
     );
   }
 }

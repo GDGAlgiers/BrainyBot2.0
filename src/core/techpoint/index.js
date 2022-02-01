@@ -1,6 +1,6 @@
 const fs = require('fs');
 const markdown = require('../../utils/markdown/index');
-const {link, paragraph, author} = require('./markdown_utils');
+
 
 const tmppath = './tmp';
 
@@ -66,8 +66,8 @@ function tmpExist() {
  */
 function addRes(url, descreption, name) {
   fs.appendFileSync(tmppath + '/resources' + '.md',
-      '\n---\n' + link(url, url) + ' ' +
-       paragraph(descreption) + author(name) + '\n---\n',
+      '\n---\n' + markdown.link(url, url) + ' ' +
+      markdown.paragraph(descreption) + markdown.author(name) + '\n---\n',
       'UTF-8', {'flags': 'a+'});
 }
 /**
@@ -78,8 +78,8 @@ function addRes(url, descreption, name) {
  */
 function addOffRes(url, descreption, name) {
   fs.appendFileSync(tmppath + '/off_resources' + '.md',
-      '\n---\n' + link(url, url) + ' ' +
-       paragraph(descreption) + author(name) + '\n---\n',
+      '\n---\n' + markdown.link(url, url) + ' ' +
+      markdown.paragraph(descreption) + markdown.author(name) + '\n---\n',
       'UTF-8', {'flags': 'a+'});
 }
 /**
@@ -89,7 +89,7 @@ function addOffRes(url, descreption, name) {
  */
 function addNote(note, name) {
   fs.appendFileSync(tmppath + '/notes' + '.md',
-      '\n---\n' + paragraph(note) + author(name) +
+      '\n---\n' + markdown.paragraph(note) + markdown.author(name) +
        '\n---\n', 'UTF-8', {'flags': 'a+'});
 }
 /**
@@ -99,7 +99,7 @@ function addNote(note, name) {
  */
 function addOffNote(note, name) {
   fs.appendFileSync(tmppath + '/off_notes' + '.md',
-      '\n---\n' + paragraph(note) + author(name) +
+      '\n---\n' + markdown.paragraph(note) + markdown.author(name) +
        '\n---\n', 'UTF-8', {'flags': 'a+'});
 }
 module.exports = {

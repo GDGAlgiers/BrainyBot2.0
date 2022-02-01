@@ -9,7 +9,7 @@
   },
   "author": "GDG Algiers",
   "scripts": {
-    "start": "node  --experimental-specifier-resolution=node bot.js",
+    "start": "node  --experimental-specifier-resolution=node src/bot.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src"
   },

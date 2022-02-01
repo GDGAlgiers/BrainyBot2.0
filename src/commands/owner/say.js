@@ -1,4 +1,4 @@
-const {OWNERS} = require('../../../config.json');
+const {OWNERS} = require('config.json');
 
 module.exports = {
   name: 'say',

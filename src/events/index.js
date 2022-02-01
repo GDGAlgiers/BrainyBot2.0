@@ -9,7 +9,7 @@ function handleEvents(client) {
   /**
    * ON Client ready
    */
-  client.on('ready', showBotPresence );
+  client.on('ready', ()=>showBotPresence(client) );
   /**
    * On interaction created
    */

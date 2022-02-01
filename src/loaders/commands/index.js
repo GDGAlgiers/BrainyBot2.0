@@ -10,11 +10,11 @@ function loadCommands(client) {
 
   const table = new Ascii().setHeading(' Slash Commands', 'Load Status');
 
-  const commandFolders = fs.readdirSync('./commands');
+  const commandFolders = fs.readdirSync('src/commands');
   for (const folder of commandFolders) {
     if (!client.config.SLASH_COMMANDS_STARTUP_COGS.includes(folder)) continue;
     const commandFiles = fs
-        .readdirSync(`./commands/${folder}`)
+        .readdirSync(`src/commands/${folder}`)
         .filter((file) => file.endsWith('.js'));
     for (const file of commandFiles) {
       const command = require(`../../commands/${folder}/${file}`);
@@ -31,7 +31,7 @@ function loadCommands(client) {
     }
   }
   console.log(table.toString());
-
+  console.log(commands);
   client.on('ready', async () => {
     await client.application.commands.set(commands);
   });

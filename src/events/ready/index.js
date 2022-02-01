@@ -1,15 +1,19 @@
 const chalk = require('chalk');
 const os = require('os-utils');
 /**
- * on bot ready show bot presence and get all members and channels
+ * show the presence of the bot
+ * @param {*} client
  */
-function showBotPresence() {
+function showBotPresence(client) {
+  // get all guilds
   const guildin = client.guilds.cache.size;
   const guildmember = client.users.cache.size;
 
+  // set presence
   client.user.setPresence({status: 'online'});
   const textList = ['With GDG Algiers', 'With WTM Algiers', 'With You'];
   client.user.setPresence({status: 'online'});
+  // change description each time
   setInterval(() => {
     const text = textList[Math.floor(Math.random() * textList.length)];
     client.user.setActivity(text, {type: 'PLAYING'});
