@@ -1,23 +1,5 @@
 const {MessageEmbed} = require('discord.js');
 
-/**
- *
- * @param {*} interaction
- * @return {*}
- */
-function baseEmbed(interaction) {
-  if (!interaction) {
-    throw Error('\'interaction\' must be passed down as param! (baseEmbed)');
-  }
-
-  const avatar = interaction.user?.displayAvatarURL({dynamic: true});
-  const tag = interaction.user?.tag;
-
-  return new MessageEmbed()
-      .setFooter(tag, avatar)
-      .setColor(interaction.guild.me.displayColor || '#00FFFF')
-      .setTimestamp();
-}
 
 /**
  *
@@ -110,7 +92,6 @@ function errorMessage(interaction, text) {
       .catch(console.error);
 }
 module.exports = {
-  baseEmbed,
   rootEmbed,
   infoMessage,
   warnMessage,

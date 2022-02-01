@@ -1,7 +1,7 @@
 module.exports = async (interaction, client) => {
   if (!interaction.isCommand()) return;
 
-  const command = client.slash.get(interaction.commandName);
+  const command = client.commands.get(interaction.commandName);
   if (!command) return interaction.reply({content: 'No command found '});
 
   if (command.userPerms) {

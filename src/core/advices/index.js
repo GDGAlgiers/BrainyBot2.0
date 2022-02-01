@@ -1,7 +1,7 @@
 const {randomInt} = require('crypto');
 const {advices} = require('./BrainyAdvice.json');
 
-const getAdvices = () => {
+const getAdvice = () => {
   // number of advices:
   const advicesLen = advices.length;
   const number = randomInt(advicesLen);
@@ -9,6 +9,6 @@ const getAdvices = () => {
   return advice;
 };
 module.exports = {
-  getAdvices,
+  getAdvice,
 };
 
