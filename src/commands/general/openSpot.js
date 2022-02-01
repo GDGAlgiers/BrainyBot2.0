@@ -4,7 +4,7 @@ const {COMANAGERS_IDS} = require('config.json');
 const {setSpot, getSpot} = require('../../core/spot');
 
 module.exports = {
-  name: 'Open Spot',
+  name: 'open_spot',
   description: 'open the spot if its closed or close it if opened',
   execute: async (client, interaction, args) => {
     const userId = interaction.user.id;

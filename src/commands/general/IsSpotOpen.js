@@ -2,7 +2,7 @@ const {MessageEmbed} = require('discord.js');
 const {getSpot} = require('../../core/spot');
 
 module.exports = {
-  name: 'Is Spot Open',
+  name: 'is_spot_open',
   description: 'check if the GDG Algiers spot is open or not',
   execute: async (client, interaction) => {
     const replyEmbed = new MessageEmbed().setAuthor(

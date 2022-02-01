@@ -8,7 +8,7 @@ module.exports = {
   name: 'announce',
   description: 'Announce a message in a specific channel',
   options: [{
-    name: 'channelName',
+    name: 'channel_name',
     description: 'Name of the channel where to announce',
     type: 'MENTIONABLE',
     required: true,
@@ -17,7 +17,7 @@ module.exports = {
     try {
       await interaction.deferReply(ephemeral('wait for the bot'));
 
-      const channelName = interaction.options.getString('channelName');
+      const channelName = interaction.options.getString('channel_name');
       const announcementChannel =
       interaction.guild.channels.cache
           .get(channelName.substring(2, channelName.length - 1));

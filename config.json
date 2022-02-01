@@ -3,7 +3,13 @@
   "ERROR_LOGS_CHANNEL": "789619219666960384",
   "SPOT": true,
   "COMMANDS_STARTUP_COGS": [],
-  "SLASH_COMMANDS_STARTUP_COGS": ["fun"],
+  "SLASH_COMMANDS_STARTUP_COGS": [
+    "fun",
+    "general",
+    "mods",
+    "owner",
+    "techpoint"
+  ],
   "OWNERS": ["642097099802017793"],
   "MODERATOR_ROLE": "moderator",
   "COMANAGERS_IDS": ["64209709980201732793"],
