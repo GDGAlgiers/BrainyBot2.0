@@ -1,6 +1,6 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 const { AutorisationError } = require('../../core/errors');
-const { COMANAGERS_IDS } = require('config.json');
+const { COMANAGERS_IDS } = require('../../../config.json');
 const { setSpot, getSpot } = require('../../core/spot');
 
 module.exports = {
