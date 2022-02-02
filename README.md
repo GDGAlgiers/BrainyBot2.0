@@ -80,7 +80,7 @@ To get a local copy up and running follow these simple steps.
    ```
 2. Install Requirements
    ```sh
-    $ node install
+    $ npm install
    ```
 
 <!-- USAGE EXAMPLES -->
@@ -90,7 +90,7 @@ To get a local copy up and running follow these simple steps.
 2. Set your application token in the `config.json`
 3. Running The bot
    ```sh
-    $ node bot.js 
+    $ npm run start
    ```
 
 
@@ -101,7 +101,7 @@ The project is split into multiple categories where each category will hold a se
 Karma has a lot of features, with **6 main categories**:
 
 
-*   👩‍💼 **General**: `serverinfo`, `ping`, `server` and **3** more! 
+*   👩‍💼 **General**: `serverinfo`, `ping`, `server`, `poll` and **2** more! 
 *   🤖 **Mod**: `announce` 
 *   👻 **Fun**: `tweet`, `advice`
 *   ✉️ **Help**: `help`
