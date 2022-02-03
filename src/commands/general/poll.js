@@ -1,7 +1,7 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 const { AuthorizationError, ArgumentError } = require("../../core/errors");
 const progressbar = require('string-progressbar');
-const { nb_votes_by_id, delete_votes_by_id } = require("../../core/poll");
+const { nb_votes } = require("../../core/poll");
 const uuid = require("uuid");
 
 module.exports = {
@@ -75,7 +75,7 @@ module.exports = {
             let option_number = interaction.customId.split(' ')[0];
             if (option_number === "end_poll") {
                 if (interaction.user.id === interaction.message.interaction.user.id) { //check if the user corresponds to the one who created the poll
-                    delete_votes_by_id(total_votes, interaction.customId.split(' ')[1]); //delete votes related to that poll
+                    total_votes = {}; //delete votes related to this poll
                     await interaction.update({
                         embeds: [interaction.message.embeds[0]],
                         components: []
@@ -103,7 +103,7 @@ module.exports = {
                 total_votes[interaction.member.id] = [interaction.customId]; //add a new user to the votes object
             }
 
-            let votes = nb_votes_by_id(total_votes, interaction.customId.split(' ')[1]); //get the total number of votes to that poll
+            let votes = nb_votes(total_votes); //get the total number of votes
 
             interaction.message.embeds[0].fields.forEach((field, index) => { //update each of the fields 
                 let votes_old = parseInt(new RegExp("[0-9]+\\s").exec(field.value)[0]); //get the number of previous votes to that option

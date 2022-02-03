@@ -5,31 +5,14 @@
  * @param {string} id - The poll's id
  * @return {number}  -total number of votes corresponding to the id poll 
  */
-const nb_votes_by_id = (votes, id) => {
+const nb_votes = (votes) => {
     let nb = 0;
     for (let key in votes) {
-        votes[key].forEach(vote => {
-            if (vote.split(" ")[1] == id) nb++;
-        });
+        nb += votes[key].length;
     }
     return nb;
 };
 
-/**
- * Delete votes related to a specific poll
- *
- * @param {object} votes - contains votes of different users
- * @param {string} id - The poll's id
- * @return {object} - The votes object after deleting the ended poll 
- */
-const delete_votes_by_id = (votes, id) => {
-    for (let key in votes) {
-        votes[key] = votes[key].filter(vote => vote.split(" ")[1] !== id);
-    }
-    return votes;
-};
-
 module.exports = {
-    nb_votes_by_id,
-    delete_votes_by_id,
+    nb_votes
 };
