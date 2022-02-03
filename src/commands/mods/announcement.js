@@ -20,15 +20,15 @@ module.exports = {
 
             const channelName = interaction.options.getChannel('channel_name');
 
-            // if (!interaction.member.roles.cache.some((role) => role.name === 'moderator')) {
-            //     await interaction.editReply(ephemeral('You don\'t have' +
-            //         ' the role to execute this command!'));
-            //     return;
-            // }
-            // if (interaction.channel.name !== 'bot_management') {
-            //     await interaction.editReply(ephemeral('You\'re at the wrong channel!'));
-            //     return;
-            // }
+            if (!interaction.member.roles.cache.some((role) => role.name === 'moderator')) {
+                await interaction.editReply(ephemeral('You don\'t have' +
+                    ' the role to execute this command!'));
+                return;
+            }
+            if (interaction.channel.name !== 'bot_management') {
+                await interaction.editReply(ephemeral('You\'re at the wrong channel!'));
+                return;
+            }
 
             await interaction.editReply(ephemeral('Send the text and the image (in one message) in this channel now!'));
 
