@@ -1,5 +1,5 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
-const { AutorisationError, ArgumentError } = require("../../core/errors");
+const { AuthorizationError, ArgumentError } = require("../../core/errors");
 const progressbar = require('string-progressbar');
 const { nb_votes_by_id, delete_votes_by_id } = require("../../core/poll");
 const uuid = require("uuid");
@@ -86,7 +86,7 @@ module.exports = {
                     });
                     collector.stop(); //ends listener
                 } else {
-                    new AutorisationError(interaction); // the user is not the one who created the poll
+                    new AuthorizationError(interaction); // the user is not the one who created the poll
                 }
 
                 return;

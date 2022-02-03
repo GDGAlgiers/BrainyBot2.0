@@ -1,5 +1,5 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
-const { AutorisationError } = require('../../core/errors');
+const { AuthorizationError } = require('../../core/errors');
 const { COMANAGERS_IDS } = require('../../../config.json');
 const { setSpot, getSpot } = require('../../core/spot');
 
@@ -12,7 +12,7 @@ module.exports = {
         //check if the user is a comanager, if not, throw an exception
         const userId = interaction.user.id;
         if (!COMANAGERS_IDS.includes(userId)) {
-            new AutorisationError(interaction);
+            new AuthorizationError(interaction);
             return;
         }
 
