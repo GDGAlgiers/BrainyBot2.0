@@ -4,10 +4,13 @@
 
 [![MIT License][license-shield]][license-url]
 
+|brainy's photo |
+ |:------------:|
+ ![photo](images/brainy.PNG)|
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="url"><img src="images/brainy.PNG" height="auto" width="200" style="border-radius:50%"></a>
+  
 
   <h3 align="center">BrainyBot 2.0</h3>
 
