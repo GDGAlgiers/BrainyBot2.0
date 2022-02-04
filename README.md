@@ -7,9 +7,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/GDGAlgiers/BrainyBot">
-    <img src="images/brainy.PNG" alt="Brainy" width="280" height="280" >
-  </a>
+  <a href="url"><img src="images/brainy.PNG" height="auto" width="200" style="border-radius:50%"></a>
 
   <h3 align="center">BrainyBot 2.0</h3>
 
@@ -74,7 +72,7 @@ To get a local copy up and running follow these simple steps.
 ### Installation
 
 1. Clone the repo and cd to it
-   ```sh
+   ```sh 
     $ git clone https://github.com/GDGAlgiers/BrainyBot2.0.git 
     $ cd BrainyBot2.0
    ```
@@ -106,7 +104,16 @@ Karma has a lot of features, with **6 main categories**:
 *   👻 **Fun**: `tweet`, `advice`
 *   ✉️ **Help**: `help`
 *   👑 **Owner**: `shutdown`, `say`, `embed`
-*   ✉️ **TechPoint**: `techpoint`, `note`, `res` and **3** more! 
+*   ✉️ **TechPoint**: `techpoint`, `note`, `res` and **3** more!  
+
+
+
+
+# Scan this qr code and join our community 
+
+ |link tree qr code |
+ |:------------:|
+ ![spot](images/QRcode.PNG)| 
 
 <!-- LICENSE -->
 ## License
