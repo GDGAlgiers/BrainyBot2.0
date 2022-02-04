@@ -8,7 +8,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/GDGAlgiers/BrainyBot">
-    <img src="images/Brainy.jpg" alt="Brainy" width="280" height="280" >
+    <img src="images/brainy.PNG" alt="Brainy" width="280" height="280" >
   </a>
 
   <h3 align="center">BrainyBot 2.0</h3>
@@ -24,7 +24,7 @@ The Repository for BrainyBot 2.0 made with
     ·
     <a href="https://github.com/GDGAlgiers/BrainyBot/issues">Request Feature</a>
   </p>
-</p>
+
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
