@@ -15,11 +15,11 @@ The Repository for BrainyBot 2.0 made with
     <a href="https://discordjs.guide/">discord.js</a>
     <br />
     <br />
-    <a href="https://github.com/GDGAlgiers/BrainyBot">View Demo</a>
+    <a href="https://github.com/GDGAlgiers/BrainyBot2.0">View Demo</a>
     ·
-    <a href="https://github.com/GDGAlgiers/BrainyBot/issues">Report Bug</a>
+    <a href="https://github.com/GDGAlgiers/BrainyBot2.0/issues">Report Bug</a>
     ·
-    <a href="https://github.com/GDGAlgiers/BrainyBot/issues">Request Feature</a>
+    <a href="https://github.com/GDGAlgiers/BrainyBot2.0/issues">Request Feature</a>
   </p>
 
 <!-- TABLE OF CONTENTS -->
