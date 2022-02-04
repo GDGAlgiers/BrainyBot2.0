@@ -113,7 +113,7 @@ Karma has a lot of features, with **6 main categories**:
 
  |link tree qr code |
  |:------------:|
- ![spot](images/QRcode.PNG)| 
+ ![spot](images/QRcode.png)| 
 
 <!-- LICENSE -->
 ## License
