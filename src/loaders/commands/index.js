@@ -31,7 +31,6 @@ function loadCommands(client) {
     }
   }
   console.log(table.toString());
-  console.log(commands);
   client.on('ready', async () => {
     await client.application.commands.set(commands);
   });
