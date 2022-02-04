@@ -10,7 +10,7 @@
   "author": "GDG Algiers",
   "scripts": {
     "start": "node  --experimental-specifier-resolution=node src/bot.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" ",
     "lint": "eslint src"
   },
   "dependencies": {
