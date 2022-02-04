@@ -1,16 +1,13 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+
 [![MIT License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/GDGAlgiers/BrainyBot">
-    <img src="images/Brainy.jpg" alt="Brainy" width="280" height="280" >
-  </a>
-
+   <a href="url"><img src="images/brainy.PNG" height="auto" width="200" style="border-radius:50%"></a>
   <h3 align="center">BrainyBot 2.0</h3>
 
   <p align="center">
@@ -24,7 +21,6 @@ The Repository for BrainyBot 2.0 made with
     ·
     <a href="https://github.com/GDGAlgiers/BrainyBot/issues">Request Feature</a>
   </p>
-</p>
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -51,31 +47,28 @@ The Repository for BrainyBot 2.0 made with
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
-## About The Project
-Brainybot 2.0 is a free, open source multipurpose discord bot made by J it lives in Our GDG Algiers Server. Brainy offers many cool features. 
 
+## About The Project
+
+Brainybot 2.0 is a free, open source multipurpose discord bot made by J it lives in Our GDG Algiers Server. Brainy offers many cool features.
 
 ### Built With
 
-* [node.js](https://nodejs.org/)
-* [discord.js ](https://discordjs.guide/)
-
+- [node.js](https://nodejs.org/)
+- [discord.js ](https://discordjs.guide/)
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
-
-
 
 ### Installation
 
 1. Clone the repo and cd to it
    ```sh
-    $ git clone https://github.com/GDGAlgiers/BrainyBot2.0.git 
+    $ git clone https://github.com/GDGAlgiers/BrainyBot2.0.git
     $ cd BrainyBot2.0
    ```
 2. Install Requirements
@@ -84,6 +77,7 @@ To get a local copy up and running follow these simple steps.
    ```
 
 <!-- USAGE EXAMPLES -->
+
 ## Usage
 
 1. First you have to create a discord application and get an Application token, client id and guild id, check out the [documentation](https://discordjs.guide/#before-you-begin)
@@ -93,36 +87,43 @@ To get a local copy up and running follow these simple steps.
     $ npm run start
    ```
 
-
-
 <!-- PROJECT STRUCTURE -->
+
 ## Project-Structure
+
 The project is split into multiple categories where each category will hold a set of commands here are the current structure :
 Karma has a lot of features, with **6 main categories**:
 
+- 👩‍💼 **General**: `serverinfo`, `ping`, `server`, `poll` and **2** more!
+- 🤖 **Mod**: `announce`
+- 👻 **Fun**: `tweet`, `advice`
+- ✉️ **Help**: `help`
+- 👑 **Owner**: `shutdown`, `say`, `embed`
+- ✉️ **TechPoint**: `techpoint`, `note`, `res` and **3** more!
 
-*   👩‍💼 **General**: `serverinfo`, `ping`, `server`, `poll` and **2** more! 
-*   🤖 **Mod**: `announce` 
-*   👻 **Fun**: `tweet`, `advice`
-*   ✉️ **Help**: `help`
-*   👑 **Owner**: `shutdown`, `say`, `embed`
-*   ✉️ **TechPoint**: `techpoint`, `note`, `res` and **3** more! 
+# Scan this qr code and join our community
+
+|     link tree qr code      |
+| :------------------------: |
+| ![spot](images/QRcode.png) |
 
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
+
 ## Contact
 
 GDG Algiers - [@gdg_algiers](https://twitter.com/gdg_algiers) - gdg.algiers@esi.dz
 
 Project Link: [https://github.com/GDGAlgiers/BrainyBot2.0](https://github.com/GDGAlgiers/BrainyBot2.0)
 
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/GDGAlgiers/BrainyBot.svg?style=for-the-badge
 [contributors-url]: https://github.com/GDGAlgiers/BrainyBot2.0/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/GDGAlgiers/BrainyBot.svg?style=for-the-badge
