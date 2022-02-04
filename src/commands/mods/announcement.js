@@ -1,6 +1,7 @@
 const {MessageEmbed} = require('discord.js');
 const {ephemeral} = require('../../utils');
 
+
 module.exports = {
   name: 'announce',
   description: 'Announce a message in a specific channel',
@@ -17,21 +18,20 @@ module.exports = {
 
       const channelName = interaction.options.getChannel('channel_name');
 
-      if (!interaction.member.roles
-          .cache.some((role) => role.name === 'admin')) {
+      if (!interaction.member.roles.cache
+          .some((role) => role.name === 'moderator')) {
         await interaction.editReply(ephemeral('You don\'t have' +
                     ' the role to execute this command!'));
         return;
       }
-      if (interaction.channel.name !== 'bots-management') {
+      if (interaction.channel.name !== 'bot_management') {
         await interaction.editReply(ephemeral('You\'re at the wrong channel!'));
         return;
       }
 
-      await interaction.editReply(
-          ephemeral('Send the text and the image'+
-          ' (in one message) in this channel now!'));
-
+      const interact = await interaction.editReply({content:
+         'Send the text and the image (in one message) in this channel now!',
+      fetchReply: true, ephemeral: true});
       const filter = (m) => m.author.id === interaction.member.id;
       const collector = interaction.channel
           .createMessageCollector({filter, max: 1, time: 90 * 1000});
@@ -48,23 +48,28 @@ module.exports = {
                   .setImage(msgAttach.url);
               embeds.push(embeddedMsg);
             });
-            // send the embeds
-            channelName.send({
-              embeds: [embeds[0].setDescription(m.content).setAuthor('GDG Algiers', 'https://www.gdgalgiers.com/static/phonelogo-db9c725b1463afd46d9b886076124bb2.png'), ...(embeds.slice(1))],
-            });
+            if (embeds.length === 1) {
+              // send the embeds
+              channelName.send({
+                embeds: [embeds[0].setDescription(m.content).setAuthor('GDG Algiers', 'https://www.gdgalgiers.com/static/phonelogo-db9c725b1463afd46d9b886076124bb2.png').setFooter(interact.author.username, interact.author.displayAvatarURL({format: 'png'}))],
+              });
+            } else { // send the embeds
+              channelName.send({
+                embeds: [embeds[0].setDescription(m.content).setAuthor('GDG Algiers', 'https://www.gdgalgiers.com/static/phonelogo-db9c725b1463afd46d9b886076124bb2.png'), ...(embeds.slice(1, -1)), embeds[embeds.length - 1].setFooter(interact.author.username, interact.author.displayAvatarURL({format: 'png'}))],
+              });
+            }
           } else {
             await channelName.send(m.content);
           }
           // confirm that the message has been announced
-          await interaction.followUp(
-              ephemeral(`Your message has been`+
-            ` successfully announced at ${channelName}`));
+          await interaction.followUp(ephemeral(`Your message`+
+          ` has been successfully announced at ${channelName}`));
         }
       });
       collector.on('end', async (collected) => {
         if (collected.size === 0) {
-          await interaction.followUp(
-              ephemeral('I didn\'t receive your announcement :/'));
+          await interaction.followUp(ephemeral('I didn\'t'+
+          ' receive your announcement :/'));
         }
         return;
       });
