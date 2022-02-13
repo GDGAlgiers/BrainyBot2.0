@@ -50,6 +50,7 @@ module.exports = {
     const imageUrl = data['message'];
 
     // Embeding the image in An Embeded message
+    // Inspired from https://stackoverflow.com/questions/71105131/how-to-send-an-embed-with-discord-js
     const EmbededTweet = new MessageEmbed()
         .setColor('0x00FF00')
         .setTitle(`You made ${account} tweet this:`)
