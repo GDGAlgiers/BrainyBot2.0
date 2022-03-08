@@ -26,7 +26,7 @@ module.exports = {
 
         if (interaction.member.roles.cache
             .some(role => role.name === 'Lead' || role.name === 'moderator' || role.name === 'Co-Manager' || role.name === 'owner')) {
-            //Grab owner commands & push it to commands_list
+            //Grab mods commands & push it to embedMess
             var commandFiles = fs.readdirSync(`./src/commands/mods`).filter(file => file.endsWith('.js'));
             for (const file of commandFiles){
                 const command = require(`../mods/${file}`)
@@ -37,7 +37,7 @@ module.exports = {
                 )
             }
 
-            //Grab owner commands & push it to commands_list
+            //Grab owner commands & push it to embedMess
             commandFiles = fs.readdirSync(`./src/commands/owner`).filter(file => file.endsWith('.js'));
             for (const file of commandFiles) {
                 const command = require(`../owner/${file}`)
