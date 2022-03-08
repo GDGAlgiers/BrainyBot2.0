@@ -1,11 +1,12 @@
 {
   "DISCORD_TOKEN": "",
-  "ERROR_LOGS_CHANNEL": "789619219666960384",
+  "ERROR_LOGS_CHANNEL": "949688247452323840",
   "SPOT": true,
   "COMMANDS_STARTUP_COGS": [],
   "SLASH_COMMANDS_STARTUP_COGS": [
     "fun",
     "general",
+    "help",
     "mods",
     "owner",
     "techpoint"
