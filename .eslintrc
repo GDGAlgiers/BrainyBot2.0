@@ -8,5 +8,9 @@
   "parserOptions": {
     "ecmaVersion": "latest"
   },
-  "rules": {}
+  "rules": {},
+  "eslint linebreak-style": [
+    "error", 
+    "windows"
+  ]
 }
