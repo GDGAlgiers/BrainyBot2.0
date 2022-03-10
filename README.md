@@ -123,13 +123,13 @@ Project Link: [https://github.com/GDGAlgiers/BrainyBot2.0](https://github.com/GD
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/GDGAlgiers/BrainyBot.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/GDGAlgiers/BrainyBot2.0.svg?style=for-the-badge
 [contributors-url]: https://github.com/GDGAlgiers/BrainyBot2.0/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/GDGAlgiers/BrainyBot.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/GDGAlgiers/BrainyBot2.0.svg?style=for-the-badge
 [forks-url]: https://github.com/GDGAlgiers/BrainyBot2.0/network/members
-[stars-shield]: https://img.shields.io/github/stars/GDGAlgiers/BrainyBot.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/GDGAlgiers/BrainyBot2.0.svg?style=for-the-badge
 [stars-url]: https://github.com/GDGAlgiers/BrainyBot2.0/stargazers
-[issues-shield]: https://img.shields.io/github/issues2.0/GDGAlgiers/BrainyBot.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues2.0/GDGAlgiers/BrainyBot2.0.svg?style=for-the-badge
 [issues-url]: https://github.com/GDGAlgiers/BrainyBot2.0/issues
-[license-shield]: https://img.shields.io/github/license/GDGAlgiers/BrainyBot.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/GDGAlgiers/BrainyBot2.0.svg?style=for-the-badge
 [license-url]: https://github.com/GDGAlgiers/BrainyBot2.0/blob/master/LICENSE.txt
