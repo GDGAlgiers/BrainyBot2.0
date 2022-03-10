@@ -91,8 +91,7 @@ To get a local copy up and running follow these simple steps.
 
 ## Project-Structure
 
-The project is split into multiple categories where each category will hold a set of commands here are the current structure :
-Karma has a lot of features, with **6 main categories**:
+The project is split into multiple categories where each category will hold a set of commands here are the current structure with **6 main categories**:
 
 - 👩‍💼 **General**: `serverinfo`, `ping`, `server`, `poll` and **2** more!
 - 🤖 **Mod**: `announce`
