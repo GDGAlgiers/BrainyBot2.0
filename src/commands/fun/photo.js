@@ -22,7 +22,7 @@ module.exports = {
     try {
       const res = await fetch(url, {
         headers: {
-          Authorization: process.env.PIXELS_API_KEY, // replace with env
+          Authorization: process.env.PIXELS_API_KEY,
         },
       });
       const { photos = [] } = await res.json();
