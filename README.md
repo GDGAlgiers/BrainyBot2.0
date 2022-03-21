@@ -67,14 +67,14 @@ To get a local copy up and running follow these simple steps.
 ### Installation
 
 1. Clone the repo and cd to it
-   ```sh
-    $ git clone https://github.com/GDGAlgiers/BrainyBot2.0.git
-    $ cd BrainyBot2.0
-   ```
+  ```sh
+  git clone https://github.com/GDGAlgiers/BrainyBot2.0.git
+  cd BrainyBot2.0
+  ```
 2. Install Requirements
-   ```sh
-    $ npm install
-   ```
+  ```sh
+  npm install
+  ```
 
 <!-- USAGE EXAMPLES -->
 
@@ -88,7 +88,7 @@ To get a local copy up and running follow these simple steps.
 3. Set your application token in the `config.json`
 4. Running The bot
    ```sh
-    $ npm run start
+   npm run start
    ```
 
 <!-- PROJECT STRUCTURE -->
@@ -99,7 +99,7 @@ The project is split into multiple categories where each category will hold a se
 
 - 👩‍💼 **General**: `serverinfo`, `ping`, `server`, `poll` and **2** more!
 - 🤖 **Mod**: `announce`
-- 👻 **Fun**: `tweet`, `advice`
+- 👻 **Fun**: `tweet`, `advice`, `photo`
 - ✉️ **Help**: `help`
 - 👑 **Owner**: `shutdown`, `say`, `embed`
 - ✉️ **TechPoint**: `techpoint`, `note`, `res` and **3** more!
