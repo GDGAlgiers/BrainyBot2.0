@@ -36,6 +36,7 @@
     "os": "^0.1.2",
     "os-utils": "^0.0.14",
     "path": "^0.12.7",
+    "simple-json-db": "^2.0.0",
     "string-progressbar": "^1.0.4",
     "superagent": "^6.1.0",
     "twemoji-parser": "^13.1.0",
