@@ -1,24 +1,19 @@
-const fetch = (...args) =>
-  import('node-fetch').then(({default: fetch}) => fetch(...args));
 const {MessageEmbed} = require('discord.js');
+const {getJokes} = require('../../utils/database');
 
 module.exports = {
   name: 'dadjoke',
   description: 'Get a dad joke from a funny bot :)',
   required: true,
   execute: async (client, interaction, args) => {
-    // jokes api url
-    const url = `https://icanhazdadjoke.com`;
-    const avatar = client.user.displayAvatarURL();
-    const tag = client.user.tag;
     try {
-      const res = await fetch(url, {
-        headers: {Accept: 'application/json'},
-      });
-      const data = await res.json();
+      const tag = client.user.tag;
+      const avatar = client.user.displayAvatarURL();
+      const joke = randomJoke();
+
       const jokeEmbed = new MessageEmbed()
           .setTitle('Dad Joke')
-          .setDescription(`**${data.joke}**`)
+          .setDescription(`**${joke}**`)
           .setColor('RANDOM')
           .setTimestamp()
           .setFooter({text: tag, iconURL: avatar});
@@ -32,3 +27,15 @@ module.exports = {
     }
   },
 };
+
+
+/**
+ * @return {Object}
+ */
+function randomJoke() {
+  const jokes = getJokes();
+  if (!jokes.length) {
+    throw new Error('No jokes found');
+  }
+  return jokes[Math.floor(Math.random() * jokes.length)];
+}
