@@ -11,7 +11,9 @@
   "scripts": {
     "start": "node  --experimental-specifier-resolution=node src/bot.js",
     "test": "echo \"Error: no test specified\" ",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@discordjs/builders": "^0.9.0",
@@ -24,12 +26,12 @@
     "config.json": "^0.0.1",
     "cpu-stat": "^2.0.1",
     "discord-api-types": "^0.26.0",
-    "discord-emoji": "^2.0.1",
+    "discord-emoji": "^2.0.3",
     "discord-fetch-all": "^3.0.2",
-    "discord.js": "^13.3.1",
+    "discord.js": "^13.6.0",
     "djs-games": "^2.1.10",
     "dotenv": "^10.0.0",
-    "enmap": "^5.8.7",
+    "enmap": "^5.8.8",
     "moment": "^2.29.1",
     "os": "^0.1.2",
     "os-utils": "^0.0.14",
@@ -42,7 +44,8 @@
     "weky": "^2.0.9"
   },
   "devDependencies": {
-    "eslint": "^8.5.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint": "^8.11.0",
+    "eslint-config-google": "^0.14.0",
+    "husky": "^7.0.0"
   }
 }
