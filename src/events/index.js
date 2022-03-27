@@ -1,5 +1,6 @@
 const handleInteraction = require('./interactions');
 const {showBotPresence} = require('./ready');
+const {onReaction} = require('./reactions');
 
 /**
  *
@@ -16,6 +17,8 @@ function handleEvents(client) {
   client.on('interactionCreate', (interaction) =>
     handleInteraction(interaction, client),
   );
+  // When users react to messages
+  client.on('messageReactionAdd', onReaction);
 }
 module.exports = {
   handleEvents,
