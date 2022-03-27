@@ -8,7 +8,19 @@ const getAdvice = () => {
   const advice = advices[number];
   return advice;
 };
+
+/**
+ * Check if message is part of the advice list.
+ * @param {string} message
+ * @return {boolean}
+ */
+function isAdvice(message) {
+  // The search can be optimized if the advice list grows
+  return advices.includes(message);
+}
+
 module.exports = {
   getAdvice,
+  isAdvice,
 };
 
