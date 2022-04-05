@@ -1,7 +1,6 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-
 [![MIT License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
@@ -87,9 +86,13 @@ To get a local copy up and running follow these simple steps.
   ```
 3. Set your application token in the `config.json`
 4. Running The bot
-   ```sh
-   npm run start
-   ```
+  ```sh
+  npm run start
+  ```
+  Or Running in development mode
+  ```sh
+  npm run dev
+  ```
 
 <!-- PROJECT STRUCTURE -->
 
@@ -99,7 +102,7 @@ The project is split into multiple categories where each category will hold a se
 
 - 👩‍💼 **General**: `serverinfo`, `ping`, `server`, `poll` and **2** more!
 - 🤖 **Mod**: `announce`
-- 👻 **Fun**: `tweet`, `advice`, `photo`
+- 👻 **Fun**: `tweet`, `advice`, `photo`, `dadjoke`
 - ✉️ **Help**: `help`
 - 👑 **Owner**: `shutdown`, `say`, `embed`
 - ✉️ **TechPoint**: `techpoint`, `note`, `res` and **3** more!
