@@ -11,6 +11,7 @@ function initDB() {
 }
 
 /**
+ * Returns an array of all games in the database.
  * @return {Array}
  */
 function getGames() {
@@ -19,6 +20,12 @@ function getGames() {
 }
 
 /**
+ * Adds a new game to the database. The game object must contain the following
+ * properties:
+ * - name: String, The name of the game
+ * - prefix: String, The prefix of the game message
+ * - link: String, The link to the game
+ * - max_tries: Number, The maximum number of tries
  * @param {Object} game
  */
 function addGame(game) {
@@ -29,7 +36,14 @@ function addGame(game) {
 }
 
 /**
- * @return {Object}
+ * Currently, only one unique session object is stored in the database.
+ * The Object contains the following information about the active session:
+ *  - channel_id: the channel id of the channel the session is active in
+ *        set to null if no session is active
+ *  - scores: an array of players scores
+ *        set to an empty array if no session is active
+ * Future versions will allow persisting sessions in the database.
+* @return {Object}
  */
 function getSession() {
   const db = initDB();
@@ -37,6 +51,7 @@ function getSession() {
 }
 
 /**
+ * Returns an array of scores for the current session.
  * @return {Array}
  */
 function getSessionScores() {
@@ -45,6 +60,7 @@ function getSessionScores() {
 }
 
 /**
+ * Returns the channel id of the active session.
  * @return {String}
  */
 function getSessionChannelId() {
@@ -53,6 +69,7 @@ function getSessionChannelId() {
 }
 
 /**
+ * Adds a new score to the current session.
  * @param {Object} score
  */
 function addScore(score) {
@@ -63,7 +80,8 @@ function addScore(score) {
 }
 
 /**
- *
+ * Resets the session object to its default state.
+ * This is called when an active session is ended.
  */
 function resetSession() {
   const emptySession = {'channel_id': null, 'scores': []};
@@ -72,13 +90,17 @@ function resetSession() {
 }
 
 /**
+ * Sets the channel id of the active session.
+ * The previous channel id must be set to null to avoid overwrinting it.
  * @param {String} channelId
  */
 function setSessionChannelId(channelId) {
   const db = initDB();
   const session = db.get('session');
-  session.channel_id = channelId;
-  db.set('session', session);
+  if (!session.channel_id) {
+    session.channel_id = channelId;
+    db.set('session', session);
+  }
 }
 
 module.exports = {

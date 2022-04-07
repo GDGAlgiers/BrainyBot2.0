@@ -8,6 +8,12 @@ const {
 } = require('./api');
 
 /**
+ * Adds a new score Object to the database. Checks if the user already
+ * submitted a score for the same game in the current session. Score object
+ * contains the following properties:
+ * - game: String, The name of the game
+ * - guessNumbers: String, The number of guesses
+ * - user: String, The username of the user who submitted the score
  * @param {Object} score
  */
 function addNewScore(score) {
@@ -22,6 +28,11 @@ function addNewScore(score) {
 }
 
 /**
+ * Parse the submission message and returns an object with the:
+ * - game: String, The name of the game
+ * - guessNumbers: String, The number of guesses
+ * - gameNumber: String, The serial number of the game
+ * - solutionDrig: Array, The grid describing the submitted solution
  * @param {String} messageContent
  * @return {Object}
  * @throws {Error}
@@ -71,6 +82,17 @@ function parseMessage(messageContent) {
 }
 
 /**
+ * Creates and returns an object based on the scores Array of the
+ * current session.
+ * The object contains a key for each game and the value is an object
+ * with guessNumbers as keys and an array of usernames as values.
+ * Example:
+ * {
+ *  'game1': {
+ *   '3': ['user1', 'user2'],
+ *  '4': ['user3', 'user4']
+ * }
+ * }
  * @return {Object}
  */
 function getResults() {
@@ -91,6 +113,7 @@ function getResults() {
 }
 
 /**
+ * Creates and returns the scoreboard for the current session.
  * @return {String}
  */
 function createScoreboard() {
@@ -116,7 +139,7 @@ function createScoreboard() {
   return scoreboard;
 }
 
-/**
+/** Returns true if there is an active wordle session
  * @return {Boolean}
  */
 function activeWordleSession() {
@@ -127,7 +150,7 @@ function activeWordleSession() {
   return false;
 }
 
-/**
+/** returns true if channelId is the channel_id of the current wordle session
  * @param {String} channelId
  * @return {Boolean}
  */

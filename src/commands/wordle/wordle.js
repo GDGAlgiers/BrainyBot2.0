@@ -46,8 +46,8 @@ module.exports = {
 
       // Send the submission to the channel
       guessNumbersMessage = guessNumbers ?
-        `**Solved within:** **${guessNumbers}** guesses! \n`:
-        '**Not solved :(** \n';
+        `**Solved within:** **${guessNumbers}** guesses! \n\n`:
+        '**Not solved :(** \n\n';
 
       const embed = new MessageEmbed()
           .setTitle( user +`'s solution for ${game} (${gameNumber})`)
