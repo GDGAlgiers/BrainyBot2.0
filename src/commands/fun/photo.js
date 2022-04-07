@@ -14,6 +14,7 @@ module.exports = {
     },
   ],
   required: true,
+  disabled: false,
   execute: async (client, interaction, args) => {
     // getting the image URL:
     const query = interaction.options.getString('query') ?? 'nature';
