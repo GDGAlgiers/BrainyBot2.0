@@ -1,0 +1,26 @@
+{
+    "games": [
+        {
+            "name": "AR - Alwird",
+            "link": "https://arwordle.netlify.app/",
+            "max_tries": 8,
+            "prefix": "#AlWird"
+        },
+        {
+            "name": "EN - Wordle",
+            "link": "https://www.nytimes.com/games/wordle/index.html",
+            "max_tries": 6,
+            "prefix": "Wordle"
+        },
+        {
+            "name": "FR - Le Mot",
+            "link": "https://wordle.louan.me/",
+            "max_tries": 6,
+            "prefix": "Le Mot (@WordleFR)"
+        }
+    ],
+    "session": {
+        "channel_id": null,
+        "scores": []
+    }
+}

@@ -10,7 +10,7 @@ module.exports = {
         .setTitle('Available Commandes :')
         .setColor(3447003);
 
-    const cogs = ['fun', 'general', 'techpoint', 'help'];
+    const cogs = ['fun', 'general', 'techpoint', 'help', 'wordle'];
     for (const cog of cogs) {
       const commandFiles = fs
           .readdirSync(`./src/commands/${cog}`)
