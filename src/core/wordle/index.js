@@ -45,6 +45,7 @@ function parseMessage(messageContent) {
 
   // remove the prefix from the message
   const solution = messageContent.replace(game.prefix, '')
+      .replaceAll('\n', ' ')
       .split(' ')
       .filter((elem) => elem !== '');
 
@@ -62,8 +63,10 @@ function parseMessage(messageContent) {
     guessNumbers = (guessNumbers == '💀' || guessNumbers == 'X') ?
         null : guessNumbers;
 
+    const endGrid = guessNumbers ? 2 + parseInt(guessNumbers) :
+     games.filter((g) =>g.name = game.name)[0].max_tries;
     // Get the grid of the solution
-    let solutionGrid = solution.slice(2, 2 + parseInt(guessNumbers));
+    let solutionGrid = solution.slice(2, endGrid);
 
     // Add spaces between rectangles so that they look better
     const newGrid = [];
