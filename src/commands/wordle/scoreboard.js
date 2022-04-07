@@ -26,7 +26,7 @@ module.exports = {
     // return response with supported games
     const embed = new MessageEmbed()
         .setColor('#00ff00')
-        .setTitle('Wordle Scorboard 🏆')
+        .setTitle('Wordle Scoreboard 🏆')
         .setDescription( createScoreboard());
     await interaction.reply({embeds: [embed]});
   },
