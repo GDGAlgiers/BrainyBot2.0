@@ -37,23 +37,22 @@ function parseMessage(messageContent) {
       .split(' ')
       .filter((elem) => elem !== '');
 
-  // Parse the response
-  game = game.name;
   try {
+    // Remove the medal emoji in AR - Alwird
+    if (game.name == 'AR - Alwird') solution.splice(2, 1);
+
+    // Get the serial number of the game
     const gameNumber = solution[0].replace('#', '');
+
+    // Get the number of guesses
     let guessNumbers = solution[1].split('/')[0];
-    let endOfGrid;
-    if (game === 'AR - Alwird') {
-      solution.splice(2, 1);
-      endOfGrid = solution.length - 2;
-    } else if (game == 'FR - Le Mot') {
-      endOfGrid = solution.length - 1;
-    } else {
-      endOfGrid = solution.length;
-    }
+
+    // Handle the case of losing the game
     guessNumbers = (guessNumbers == '💀' || guessNumbers == 'X') ?
         null : guessNumbers;
-    let solutionGrid = solution.slice(2, endOfGrid);
+
+    // Get the grid of the solution
+    let solutionGrid = solution.slice(2, 2 + parseInt(guessNumbers));
 
     // Add spaces between rectangles so that they look better
     const newGrid = [];
@@ -65,8 +64,7 @@ function parseMessage(messageContent) {
       newGrid.push(newLine);
     });
     solutionGrid = newGrid.join('\n');
-
-    return {game, gameNumber, guessNumbers, solutionGrid};
+    return {game: game.name, gameNumber, guessNumbers, solutionGrid};
   } catch {
     throw new Error('Invalid submission. Paste it as it is :)');
   }
@@ -77,34 +75,35 @@ function parseMessage(messageContent) {
  */
 function getResults() {
   const scores = getSessionScores();
-  const games = {};
+  const gamesResults = {};
   scores.forEach((score) => {
     if (score.guessNumbers) {
-      if (!games[score.game]) {
-        games[score.game] = {};
+      if (!gamesResults[score.game]) {
+        gamesResults[score.game] = {};
       }
-      if (!games[score.game][score.guessNumbers]) {
-        games[score.game][score.guessNumbers] = [];
+      if (!gamesResults[score.game][score.guessNumbers]) {
+        gamesResults[score.game][score.guessNumbers] = [];
       }
-      games[score.game][score.guessNumbers].push(score.user);
+      gamesResults[score.game][score.guessNumbers].push(score.user);
     }
   });
-  return games;
+  return gamesResults;
 }
 
 /**
  * @return {String}
  */
-function getScoreboard() {
+function createScoreboard() {
   const results = getResults();
   const games = getGames();
+
   let scoreboard = '';
   const emojis = ['🥇', '🥈', '🥉'];
 
   Object.keys(results).forEach((game) => {
     scoreboard += `**${game}**\n`;
     i = 0;
-    Object.keys(results[game]).forEach((guessNumbers) => {
+    Object.keys(results[game]).sort().forEach((guessNumbers) => {
       emoji = i < emojis.length ? emojis[i] : '';
       i += 1;
       maxTries = games.filter((g) => g.name === game)[0].max_tries;
@@ -115,13 +114,6 @@ function getScoreboard() {
   });
 
   return scoreboard;
-}
-
-/**
- * @return {Array}
- */
-function getAvailableGames() {
-  return getGames().map((game) => ({name: game.name, link: game.link}));
 }
 
 /**
@@ -143,28 +135,13 @@ function wordleSessionChannel(channelId) {
   return getSessionChannelId() === channelId;
 }
 
-/**
- * @param {String} channelId
- */
-function createWordleSession(channelId) {
-  setSessionChannelId(channelId);
-}
-
-/**
- * End the wordle session, by resetting the session object in the database
- */
-function endWordleSession() {
-  resetSession();
-}
-
-
 module.exports = {
-  activeWordleSession,
-  createWordleSession,
-  wordleSessionChannel,
-  endWordleSession,
+  createWordleSession: setSessionChannelId,
+  endWordleSession: resetSession,
+  getAvailableGames: getGames,
   parseMessage,
   addNewScore,
-  getScoreboard,
-  getAvailableGames,
+  createScoreboard,
+  wordleSessionChannel,
+  activeWordleSession,
 };

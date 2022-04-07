@@ -18,7 +18,7 @@ module.exports = {
     required: true,
   }],
   execute: async (client, interaction, args) => {
-    // Check if it's the right channel
+    // Check if there is an active session
     if (!activeWordleSession()) {
       await interaction.reply(ephemeral(`No active wordle session found.`));
       return;
@@ -26,7 +26,7 @@ module.exports = {
     // Check if the channel is the same as the session channel
     const channelId = interaction.channel.id;
     if (!wordleSessionChannel(channelId)) {
-      await interaction.reply(ephemeral(`You can only play in`+
+      await interaction.reply(ephemeral(`You can only play in `+
         `today's Wordle channel.`));
       return;
     }
@@ -40,12 +40,15 @@ module.exports = {
         gameNumber,
         guessNumbers,
         solutionGrid} = parseMessage(messageContent);
+
       // Update the score
       addNewScore({game, guessNumbers, user});
+
       // Send the submission to the channel
       guessNumbersMessage = guessNumbers ?
         `**Solved within:** **${guessNumbers}** guesses! \n`:
         '**Not solved :(** \n';
+
       const embed = new MessageEmbed()
           .setTitle( user +`'s solution for ${game} (${gameNumber})`)
           .setDescription(

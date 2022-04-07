@@ -18,6 +18,7 @@ module.exports = {
     // Get the id of the channel where the command was sent
     const channelId = interaction.channel.id;
     createWordleSession(channelId);
+
     // return response with supported games
     supportedGames = '';
     for (const game of getAvailableGames()) {
@@ -25,9 +26,8 @@ module.exports = {
     }
     const embed = new MessageEmbed()
         .setColor('#00ff00')
-        .setTitle(
-            'New Day, New Wordle!')
-        .setDescription('Let the games begin!\n'+
+        .setTitle('New Day, New Wordle!')
+        .setDescription('Let the game begin!\n'+
           'The supported games:\n'+
           supportedGames+
           '\n'+

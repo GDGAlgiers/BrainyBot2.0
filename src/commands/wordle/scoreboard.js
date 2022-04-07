@@ -2,7 +2,7 @@ const {MessageEmbed} = require('discord.js');
 const {
   activeWordleSession,
   wordleSessionChannel,
-  getScoreboard,
+  createScoreboard,
 } = require('../../core/wordle');
 const {ephemeral} = require('../../utils/index');
 
@@ -19,7 +19,7 @@ module.exports = {
     // Check if the channel is the same as the session channel
     const channelId = interaction.channel.id;
     if (!wordleSessionChannel(channelId)) {
-      await interaction.reply(ephemeral(`You can only play in`+
+      await interaction.reply(ephemeral(`You can only play in `+
           `today's Wordle channel.`));
       return;
     }
@@ -27,7 +27,7 @@ module.exports = {
     const embed = new MessageEmbed()
         .setColor('#00ff00')
         .setTitle('Wordle Scorboard 🏆')
-        .setDescription( getScoreboard());
+        .setDescription( createScoreboard());
     await interaction.reply({embeds: [embed]});
   },
 };

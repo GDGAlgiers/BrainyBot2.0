@@ -19,7 +19,7 @@ module.exports = {
     // Check if the channel is the same as the session channel
     const channelId = interaction.channel.id;
     if (!wordleSessionChannel(channelId)) {
-      await interaction.reply(ephemeral(`You can only end your wordle`+
+      await interaction.reply(ephemeral(`You can only end your wordle `+
       `session in today's wordle channel.`));
       return;
     }
