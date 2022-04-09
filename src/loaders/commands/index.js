@@ -18,15 +18,15 @@ function loadCommands(client) {
         .filter((file) => file.endsWith('.js'));
     for (const file of commandFiles) {
       const command = require(`../../commands/${folder}/${file}`);
-      if (command.name) {
+      if (command.name && !command.disabled) {
         client.commands.set(command.name, command);
         commands.push(command);
-        table.addRow(file.split('.')[0], '✔️');
+        table.addRow(file.split('.')[0], '✅');
       } else {
-        table.addRow(
-            file,
-            '❌ => Missing a help.name or help.name is not in string',
-        );
+        const msg = command.disabled ?
+          `❌ => Command '${command.name}' is disabled` :
+          '❌ => Missing a help.name or help.name is not a string';
+        table.addRow(file, msg);
       }
     }
   }
