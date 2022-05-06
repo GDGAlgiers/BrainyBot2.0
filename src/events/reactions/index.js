@@ -11,7 +11,8 @@ async function onReaction(reaction, user) {
   // sure it has this structure before checking for the content being an advice
   // or not
   if (reaction.message.embeds.length != 0 &&
-        'description' in reaction.message.embeds[0]) {
+      'description' in reaction.message.embeds[0] &&
+      reaction.message.embeds[0].description !== null) {
     content = reaction.message.embeds[0].description;
     // Remove formatting (e.g. '**Advice Here**')
     content = content.substr(2, content.length - 4);
