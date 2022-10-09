@@ -65,6 +65,8 @@ module.exports = {
         })
         .join(' ');
 
+        //hello
+
     await interaction.reply(`${bigTextReactions}`);
   },
 };
