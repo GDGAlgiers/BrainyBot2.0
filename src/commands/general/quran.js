@@ -12,12 +12,10 @@ module.exports = {
   disabled: false,
   execute: async (client, interaction, args) => {
     const verse = Math.floor(Math.random() * 623);
-    console.log(verse);
     const url = `https://www.easyquran.com/segments-jpg/seg/${verse}.jpg`;
 
     try {
       const res = await fetch(url);
-      console.log(res.url);
       const photoURL = await res.url;
       const ImageEmbed = new MessageEmbed().setImage(photoURL).setTimestamp();
       await interaction.reply({ embeds: [ImageEmbed] });
