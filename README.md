@@ -86,12 +86,22 @@ To get a local copy up and running follow these simple steps.
   ```
 3. Set your application token in the `config.json`
 4. Running The bot
+  ### Using npm:
   ```sh
   npm run start
   ```
   Or Running in development mode
   ```sh
   npm run dev
+  ```
+  ### Using docker:
+  - Build the docker image
+  ```sh
+  docker build -t brainy:latest ./
+  ```
+  - Run the container
+  ```sh
+  docker run brainy
   ```
 
 <!-- PROJECT STRUCTURE -->
